@@ -1,0 +1,100 @@
+.main-page-visible {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.8s ease-in-out, visibility 1s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-page-hidden {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.7s ease-in-out, visibility 1s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#dashboard-container {
+    background-color: aliceblue;
+}
+
+.metric-container {
+    border: 2px solid rgba(0, 168, 168, 0.434);
+    border-radius: 10px;
+}
+
+#filters-container {
+    border: 2px solid rgba(5, 56, 56, 0.202);
+    background-color: rgba(145, 145, 145, 0.014);
+    border-radius: 6px;
+}
+
+#lyti-container {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#lyti-container:hover {
+    transform: scale(0.95);
+}
+
+
+.glow-gradient {
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, red, orange, rgb(34, 34, 14), lime, cyan, blue, violet);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rgb-glow 5s linear infinite;
+}
+
+@keyframes rgb-glow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.pulse-circle {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: #0dcaf0;
+    position: relative;
+}
+
+.pulse-circle::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #0dcaf0;
+    opacity: 0.6;
+    animation: pulse-ring 1.5s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+#lyti-greeting {
+    font-style: italic;
+    color: grey;
+}
