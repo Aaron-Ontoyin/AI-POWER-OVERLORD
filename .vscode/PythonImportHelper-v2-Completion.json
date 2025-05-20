@@ -1,0 +1,702 @@
+[
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Output",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Output",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "State",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "ctx",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "no_update",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "dcc",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Output",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "State",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Output",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "CeleryManager",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "dcc",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "dash_bootstrap_components",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dash_bootstrap_components",
+        "description": "dash_bootstrap_components",
+        "detail": "dash_bootstrap_components",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "settings",
+        "description": "settings",
+        "isExtraImport": true,
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Celery",
+        "importPath": "celery",
+        "description": "celery",
+        "isExtraImport": true,
+        "detail": "celery",
+        "documentation": {}
+    },
+    {
+        "label": "redis",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "redis",
+        "description": "redis",
+        "detail": "redis",
+        "documentation": {}
+    },
+    {
+        "label": "orjson",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "orjson",
+        "description": "orjson",
+        "detail": "orjson",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "flask_session",
+        "description": "flask_session",
+        "isExtraImport": true,
+        "detail": "flask_session",
+        "documentation": {}
+    },
+    {
+        "label": "register_callbacks",
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "isExtraImport": true,
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "navbar_ui",
+        "importPath": "src.navbar",
+        "description": "src.navbar",
+        "isExtraImport": true,
+        "detail": "src.navbar",
+        "documentation": {}
+    },
+    {
+        "label": "page_content_ui",
+        "importPath": "src.page_content",
+        "description": "src.page_content",
+        "isExtraImport": true,
+        "detail": "src.page_content",
+        "documentation": {}
+    },
+    {
+        "label": "hashlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "BaseSettings",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "PydanticBaseSettingsSource",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "SettingsConfigDict",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "register_nav_callbacks",
+        "kind": 2,
+        "importPath": "src.navbar.callbacks",
+        "description": "src.navbar.callbacks",
+        "peekOfCode": "def register_nav_callbacks(app: Dash):\n    @app.callback(\n        output=dict(\n            user_check=Output(\"user-name-check\", \"className\"),\n            username=Output(\"user-name-value\", \"children\"),\n        ),\n        inputs=dict(\n            url_pathname=Input(\"url\", \"pathname\"),\n            url_refresh=Input(\"url\", \"refresh\"),\n        ),",
+        "detail": "src.navbar.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "navbar_ui",
+        "kind": 5,
+        "importPath": "src.navbar.ui",
+        "description": "src.navbar.ui",
+        "peekOfCode": "navbar_ui = dbc.Navbar(\n    dbc.Container(\n        [\n            dbc.Row(\n                [\n                    dbc.Col(\n                        [\n                            html.Div(\n                                html.Img(\n                                    src=\"assets/logo.png\",",
+        "detail": "src.navbar.ui",
+        "documentation": {}
+    },
+    {
+        "label": "mark_a_status",
+        "kind": 2,
+        "importPath": "src.page_content.auth.callbacks",
+        "description": "src.page_content.auth.callbacks",
+        "peekOfCode": "def mark_a_status(msg: str, success: bool) -> dbc.Container:\n    if success:\n        icon_class = \"fa fa-check-circle me-2 text-success\"\n    else:\n        icon_class = \"fa fa-times-circle me-2 text-danger\"\n    return dbc.Container([html.I(className=icon_class), html.Span(msg)])\ndef register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(",
+        "detail": "src.page_content.auth.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "register_auth_callbacks",
+        "kind": 2,
+        "importPath": "src.page_content.auth.callbacks",
+        "description": "src.page_content.auth.callbacks",
+        "peekOfCode": "def register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(\n            url_pathname=Input(\"url\", \"pathname\"),\n            refresh=Input(\"url\", \"refresh\"),\n        ),\n    )\n    def show_hide_page(url_pathname, refresh):\n        if session.get(\"authenticated\") == True:",
+        "detail": "src.page_content.auth.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "login_form",
+        "kind": 5,
+        "importPath": "src.page_content.auth.ui",
+        "description": "src.page_content.auth.ui",
+        "peekOfCode": "login_form = dbc.Form(\n    dbc.Col(\n        [\n            dbc.Row(\n                dbc.Input(\n                    type=\"password\",\n                    placeholder=\"Authentication key\",\n                    size=\"sm\",\n                    id=\"auth-key\",\n                ),",
+        "detail": "src.page_content.auth.ui",
+        "documentation": {}
+    },
+    {
+        "label": "markdown_highlight_style",
+        "kind": 5,
+        "importPath": "src.page_content.auth.ui",
+        "description": "src.page_content.auth.ui",
+        "peekOfCode": "markdown_highlight_style = {\n    \"backgroundColor\": \"rgba(0, 0, 230, 0.07)\",\n    \"color\": \"#000b3d\",\n    \"borderRadius\": \"5px\",\n    \"padding\": \"0 5px\",\n    \"fontSize\": \"1rem\",\n}\nlean_more_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\"Enerlytics\"),",
+        "detail": "src.page_content.auth.ui",
+        "documentation": {}
+    },
+    {
+        "label": "lean_more_modal",
+        "kind": 5,
+        "importPath": "src.page_content.auth.ui",
+        "description": "src.page_content.auth.ui",
+        "peekOfCode": "lean_more_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\"Enerlytics\"),\n        dbc.ModalBody(\n            [\n                \"Enerlytics is an AI-powered smart metering and analytics platform designed to optimize electricity distribution and management. Our system leverages real-time data from smart meters to detect anomalies, monitor energy usage patterns, and provide actionable insights for utility providers.\",\n                html.Br(),\n                \"By combining \",\n                html.Span(\"Intelligent Algorithms \", style=markdown_highlight_style),\n                \"with modern visualization tools, Enerlytics enables faster decision-making, reduced energy loss, and improved efficiency across the power grid.\",",
+        "detail": "src.page_content.auth.ui",
+        "documentation": {}
+    },
+    {
+        "label": "auth_modal",
+        "kind": 5,
+        "importPath": "src.page_content.auth.ui",
+        "description": "src.page_content.auth.ui",
+        "peekOfCode": "auth_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\n            [\n                dbc.ModalTitle(\"Authorization\", className=\"fs-6\"),\n                dcc.Loading(\n                    display=\"show\",\n                    className=\"me-5\",\n                    id=\"auth-loading-icon\",\n                ),",
+        "detail": "src.page_content.auth.ui",
+        "documentation": {}
+    },
+    {
+        "label": "auth_ui",
+        "kind": 5,
+        "importPath": "src.page_content.auth.ui",
+        "description": "src.page_content.auth.ui",
+        "peekOfCode": "auth_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Container(\n                    [\n                        dbc.Row(\n                            login_form,\n                            className=\"h-50 d-flex justify-content-center align-items-center pe-md-5\",\n                        ),",
+        "detail": "src.page_content.auth.ui",
+        "documentation": {}
+    },
+    {
+        "label": "register_dashboard_callbacks",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.callbacks",
+        "description": "src.page_content.dashboard.callbacks",
+        "peekOfCode": "def register_dashboard_callbacks(app: Dash, store_data: Callable, retrieve_data):\n    @app.callback(\n        Output(\"dashboard-container\", \"className\"),\n        inputs=dict(\n            url_pathname=Input(\"url\", \"pathname\"),\n            refresh=Input(\"url\", \"refresh\"),\n        ),\n    )\n    def show_hide_page(url_pathname, refresh):\n        if session.get(\"authenticated\") == True:",
+        "detail": "src.page_content.dashboard.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "chat_canvas",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "chat_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                html.P(\n                    \"Explore the distribution data? Just ask Lyti!\", id=\"lyti-greeting\"\n                )\n            ],\n            id=\"chat-canvas\",\n            placement=\"end\",",
+        "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard_ui",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "dashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Row(\n                    [\n                        dbc.Col(\n                            dbc.Container(\n                                id=\"filters-container\",\n                                style={\"min-height\": 140},",
+        "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
+        "label": "register_page_content_callbacks",
+        "kind": 2,
+        "importPath": "src.page_content.callbacks",
+        "description": "src.page_content.callbacks",
+        "peekOfCode": "def register_page_content_callbacks(\n    app: Dash,\n    store_data: Callable,\n    retrieve_data: Callable,\n):\n    pass\n    # @app.callback(\n    #     Output(\"page-content-sign-in\", \"class_name\", allow_duplicate=True),\n    #     Output(\"page-content-dashboard\", \"class_name\", allow_duplicate=True),\n    #     Output(\"data-name\", \"children\"),",
+        "detail": "src.page_content.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "page_content_ui",
+        "kind": 5,
+        "importPath": "src.page_content.ui",
+        "description": "src.page_content.ui",
+        "peekOfCode": "page_content_ui = dbc.Container(\n    [auth_ui, dashboard_ui],\n    fluid=True,\n    className=\"w-100 h-100 position-relative\",\n    style={\"overflow\": \"hidden\"},\n)",
+        "detail": "src.page_content.ui",
+        "documentation": {}
+    },
+    {
+        "label": "store_data",
+        "kind": 2,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "def store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "retrieve_data",
+        "kind": 2,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "def retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:\n        print(e)\n        return None\ndef register_callbacks(app: Dash):",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "register_callbacks",
+        "kind": 2,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "def register_callbacks(app: Dash):\n    app._background_manager = background_callback_manager\n    register_nav_callbacks(app)\n    register_page_content_callbacks(app, store_data, retrieve_data)",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "redis_client",
+        "kind": 5,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)\nredis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "redis_url",
+        "kind": 5,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "redis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "celery_app",
+        "kind": 5,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "celery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "background_callback_manager",
+        "kind": 5,
+        "importPath": "src.callbacks",
+        "description": "src.callbacks",
+        "peekOfCode": "background_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data",
+        "detail": "src.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "external_stylesheets",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "external_stylesheets = [\n    dbc.themes.BOOTSTRAP,\n    \"assets/styles.css\",\n    \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css\",\n]\nserver = Flask(__name__)\nserver.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "server",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "server = Flask(__name__)\nserver.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "server.secret_key",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "server.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "server.config[\"SESSION_TYPE\"]",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "server.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "server.config[\"SESSION_PERMANENT\"]",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "server.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)\napp.layout = dbc.Container(\n    [",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.layout",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"memory\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,\n    class_name=\"d-flex flex-column p-0 m-0\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "class Settings(BaseSettings):\n    \"\"\"Class to store all the settings of the application.\"\"\"\n    ENVIRONMENT: Literal[\"dev\", \"prod\"] = \"dev\"\n    ADMIN_KEY: str\n    API_KEY: str\n    SECRET_KEY: str\n    SESSION_TYPE: str\n    SESSION_PERMANENT: bool = False\n    REDIS_URL: str\n    APOSTGRES_DATABASE_URL: str = (",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "hash_key",
+        "kind": 2,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "def hash_key(key: str) -> str:\n    \"\"\"Hash the key using SHA-256.\"\"\"\n    return hashlib.sha256(key.encode()).hexdigest()\nclass Settings(BaseSettings):\n    \"\"\"Class to store all the settings of the application.\"\"\"\n    ENVIRONMENT: Literal[\"dev\", \"prod\"] = \"dev\"\n    ADMIN_KEY: str\n    API_KEY: str\n    SECRET_KEY: str\n    SESSION_TYPE: str",
+        "detail": "settings",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 5,
+        "importPath": "settings",
+        "description": "settings",
+        "peekOfCode": "settings = Settings()",
+        "detail": "settings",
+        "documentation": {}
+    }
+]

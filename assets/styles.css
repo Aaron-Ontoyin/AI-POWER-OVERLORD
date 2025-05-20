@@ -31,7 +31,7 @@
 
 #lyti-container {
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-out;
 }
 
 #lyti-container:hover {

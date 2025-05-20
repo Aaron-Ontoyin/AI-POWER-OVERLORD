@@ -25,10 +25,9 @@ login_form = dbc.Form(
                 style={"width": "fit-content"},
             ),
         ],
-        md=6,
-        align="center",
         className="d-flex flex-column align-items-center",
-    )
+    ),
+    style={"width": "fit-content"},
 )
 
 
@@ -104,21 +103,47 @@ auth_ui = dbc.Container(
         dbc.Container(
             [
                 dbc.Container(
-                    login_form,
-                    className="justify-content-center",
-                    style={"margin-bottom": 300},
+                    [
+                        dbc.Row(
+                            login_form,
+                            className="h-50 d-flex justify-content-center align-items-center pe-md-5",
+                        ),
+                        dbc.Row(className="h-50 d-none d-md-block"),
+                    ],
+                    className="h-100",
                 ),
+                dbc.Container(className="h-100 d-none d-md-block"),
                 dbc.Container(
-                    html.Div(
-                        [
-                            html.Span("Enerlytics", style=markdown_highlight_style),
-                            "empowers smarter energy distribution through real-time analytics and intelligent monitoring — ",
-                            html.A("Learn more", id="learn-more-link", href="#"),
-                        ],
-                        className="text-center ms-md-5 text-muted fs-6 col-12 col-md-6",
-                    ),
-                    className="justify-content-center d-flex ms-md-5",
-                    style={"margin-top": 250},
+                    [
+                        dbc.Row(
+                            [
+                                html.Img(
+                                    src="assets/trans.png",
+                                    draggable="true",
+                                    className="w-75 fluid",
+                                )
+                            ],
+                            className="h-50 d-none d-md-flex justify-content-end pe-lg-5",
+                        ),
+                        dbc.Row(
+                            [
+                                html.Div(
+                                    [
+                                        html.Span(
+                                            "Enerlytics", style=markdown_highlight_style
+                                        ),
+                                        "empowers smarter energy distribution through real-time analytics and intelligent monitoring — ",
+                                        html.A(
+                                            "Learn more", id="learn-more-link", href="#"
+                                        ),
+                                    ],
+                                    className="text-center pe-md-5 text-muted fs-6",
+                                ),
+                            ],
+                            className="h-50 d-flex justify-content-center align-items-center pe-md-5",
+                        ),
+                    ],
+                    className="h-100",
                 ),
                 auth_modal,
                 lean_more_modal,
