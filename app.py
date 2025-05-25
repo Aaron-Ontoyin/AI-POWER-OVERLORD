@@ -2,6 +2,7 @@ from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
 from flask import Flask, session
 from flask_session import Session
+import dash_mantine_components as dmc
 
 from src.callbacks import register_callbacks
 from src.navbar import navbar_ui
@@ -31,7 +32,7 @@ app = Dash(
     prevent_initial_callbacks=True,
 )
 
-app.layout = dbc.Container(
+layout = dbc.Container(
     [
         dcc.Location(id="url", refresh=False),
         dcc.Store(id="local-store", storage_type="memory", data={}),
@@ -47,6 +48,7 @@ app.layout = dbc.Container(
         "overflow": "hidden",
     },
 )
+app.layout = dmc.MantineProvider(children=layout)
 
 register_callbacks(app)
 

@@ -1,3 +1,7 @@
+.fa-tiny {
+    font-size: 0.6rem;
+}
+
 .main-page-visible {
     position: absolute;
     inset: 0;
@@ -18,31 +22,151 @@
     background-color: aliceblue;
 }
 
+.card-label {
+    font-size: 0.9rem;
+    color: #5b5a5ae5;
+    font-weight: 600;
+}
+
+.setting-dtp input {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-shadow: none;
+}
+
+.setting-dtp input:focus {
+    border-color: #8884ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(136, 132, 255, 0.2);
+}
+
+#datetime-picker-end,
+#datetime-picker-start {
+    color: #777;
+}
+
+#select-coverage-area-btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #777;
+    transition: all 0.2s ease;
+    width: 96%;
+}
+
+#select-coverage-area-btn:hover {
+    background-color: #f4f4f4;
+    border-color: #ccc;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1rem;
+}
+
 .metric-container {
-    border: 2px solid rgba(0, 168, 168, 0.434);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 5px 5px;
+    border: 2px solid #00c3ea40;
     border-radius: 10px;
 }
 
-#filters-container {
-    border: 2px solid rgba(5, 56, 56, 0.202);
-    background-color: rgba(145, 145, 145, 0.014);
-    border-radius: 6px;
+.main-svg {
+    border-radius: 10px;
 }
 
-#lyti-container {
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.metric-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #008aa5;
+}
+
+.areas-covered-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    overflow: scroll;
+    height: 85px;
+}
+
+.area-covered {
+    background-color: #034a4b16;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    color: #333;
+}
+
+#signal-stream-btn {
+    color: #008aa5;
+    border-color: #008aa5;
+}
+
+#signal-stream-btn:hover {
+    background-color: #00a7c8;
+    border-color: #00a7c8;
+    color: #fff;
+}
+
+#ask-lyti {
     cursor: pointer;
     transition: transform 0.3s ease-out;
+    font-size: 0.8rem;
 }
 
-#lyti-container:hover {
+#ask-lyti:hover {
     transform: scale(0.95);
 }
 
+.lyti-img {
+    scale: 0.8;
+    animation: lyti-movement 10s linear infinite;
+}
+
+@keyframes lyti-movement {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(0deg);
+    }
+
+    45% {
+        transform: rotate(-20deg);
+    }
+
+    55% {
+        transform: rotate(20deg);
+    }
+
+    60% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 .glow-gradient {
     font-size: 1.1rem;
     font-weight: bold;
-    background: linear-gradient(45deg, red, orange, rgb(34, 34, 14), lime, cyan, blue, violet);
+    background: linear-gradient(45deg, red, orange, rgb(34, 34, 14), rgb(2, 167, 2), cyan, blue, violet);
     background-size: 400% 400%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -55,8 +179,12 @@
         background-position: 0% 50%;
     }
 
-    100% {
+    50% {
         background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
     }
 }
 

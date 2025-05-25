@@ -136,7 +136,31 @@
         "documentation": {}
     },
     {
+        "label": "ctx",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
         "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "dcc",
         "importPath": "dash",
         "description": "dash",
         "isExtraImport": true,
@@ -161,6 +185,14 @@
     },
     {
         "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
         "importPath": "dash",
         "description": "dash",
         "isExtraImport": true,
@@ -306,6 +338,22 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Callable",
         "importPath": "typing",
         "description": "typing",
@@ -319,6 +367,58 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "dash_mantine_components",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dash_mantine_components",
+        "description": "dash_mantine_components",
+        "detail": "dash_mantine_components",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -511,6 +611,33 @@
         "documentation": {}
     },
     {
+        "label": "create_consumption_patterns_fig",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "def create_consumption_patterns_fig():\n    df.index = pd.to_datetime(df.index)\n    df_long = df.reset_index().melt(\n        id_vars=\"index\", var_name=\"transformer\", value_name=\"consumption\"\n    )\n    df_long.rename(columns={\"index\": \"timestamp\"}, inplace=True)\n    df_total = df_long.groupby(\"timestamp\")[\"consumption\"].sum().reset_index()\n    fig = go.Figure()\n    transformers = df_long[\"transformer\"].unique()\n    for t in transformers:",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "df = pd.DataFrame(\n    {\n        \"T1\": np.sin(np.arange(0, 10, 0.1)),\n        \"T2\": np.cos(np.arange(0, 10, 0.1)),\n        \"T3\": np.tan(np.arange(0, 10, 0.1)),\n    },\n    index=pd.date_range(start=\"2024-01-01\", periods=100, freq=\"D\"),\n)\ndef create_consumption_patterns_fig():\n    df.index = pd.to_datetime(df.index)",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "CoverageArea",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class CoverageArea(BaseModel):\n    id: str\n    type: str\n    name: str\n    description: str\n    sub_areas: List[\"CoverageArea\"] = []\n    @property\n    def badge_color(self):\n        type_ = self.type.lower()\n        match type_:",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
         "label": "chat_canvas",
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
@@ -520,12 +647,39 @@
         "documentation": {}
     },
     {
+        "label": "coverage_area_modal",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "coverage_area_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\n            [\n                dbc.ModalTitle(\"Select Coverage Areas\", className=\"fs-6\"),\n                html.I(\n                    className=\"fa fa-street-view text-muted\", **{\"aria-hidden\": \"true\"}\n                ),\n            ],\n            class_name=\"d-flex justify-content-between pe-4\",",
+        "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
+        "label": "signal_stream_canvas",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "signal_stream_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                dmc.Card(\n                    [\n                        dmc.CardSection(\n                            [\n                                \"Header\",\n                                html.I(",
+        "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
         "label": "dashboard_ui",
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "dashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Row(\n                    [\n                        dbc.Col(\n                            dbc.Container(\n                                id=\"filters-container\",\n                                style={\"min-height\": 140},",
+        "peekOfCode": "dashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Row(\n                    [\n                        dbc.Col(\n                            dbc.Card(\n                                [\n                                    dbc.CardBody(",
         "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
+        "label": "get_coverage_areas",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.waiter",
+        "description": "src.page_content.dashboard.waiter",
+        "peekOfCode": "def get_coverage_areas() -> List[CoverageArea]:\n    \"\"\"\n    Get the coverage areas from the api\n    \"\"\"\n    return [\n        CoverageArea(\n            id=\"1\",\n            type=\"Country\",\n            name=\"Ghana\",\n            description=\"Ghana is a country in West Africa.\",",
+        "detail": "src.page_content.dashboard.waiter",
         "documentation": {}
     },
     {
@@ -535,6 +689,15 @@
         "description": "src.page_content.callbacks",
         "peekOfCode": "def register_page_content_callbacks(\n    app: Dash,\n    store_data: Callable,\n    retrieve_data: Callable,\n):\n    pass\n    # @app.callback(\n    #     Output(\"page-content-sign-in\", \"class_name\", allow_duplicate=True),\n    #     Output(\"page-content-dashboard\", \"class_name\", allow_duplicate=True),\n    #     Output(\"data-name\", \"children\"),",
         "detail": "src.page_content.callbacks",
+        "documentation": {}
+    },
+    {
+        "label": "get_footer",
+        "kind": 2,
+        "importPath": "src.page_content.footer_ui",
+        "description": "src.page_content.footer_ui",
+        "peekOfCode": "def get_footer(add_logout_btn: bool = False):\n    return html.Footer(\n        [\n            html.Span(\n                [\n                    \"Created by \",\n                    html.A(\n                        \"Aaron Ontoyin\",\n                        href=\"https://aaronontoyin.tech/\",\n                        target=\"_blank\",",
+        "detail": "src.page_content.footer_ui",
         "documentation": {}
     },
     {
@@ -659,7 +822,16 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)\napp.layout = dbc.Container(\n    [",
+        "peekOfCode": "app = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)\nlayout = dbc.Container(\n    [",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "layout",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"memory\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,\n    class_name=\"d-flex flex-column p-0 m-0\",",
         "detail": "app",
         "documentation": {}
     },
@@ -668,7 +840,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"memory\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,\n    class_name=\"d-flex flex-column p-0 m-0\",",
+        "peekOfCode": "app.layout = dmc.MantineProvider(children=layout)\nregister_callbacks(app)\nif __name__ == \"__main__\":\n    app.run(debug=True)",
         "detail": "app",
         "documentation": {}
     },

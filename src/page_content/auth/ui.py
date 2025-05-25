@@ -1,6 +1,8 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
+from ..footer_ui import get_footer
+
 
 login_form = dbc.Form(
     dbc.Col(
@@ -119,8 +121,7 @@ auth_ui = dbc.Container(
                             [
                                 html.Img(
                                     src="assets/trans.png",
-                                    draggable="true",
-                                    className="w-75 fluid",
+                                    className="img-fluid w-75 d-none d-lg-block",
                                 )
                             ],
                             className="h-50 d-none d-md-flex justify-content-end pe-lg-5",
@@ -137,10 +138,10 @@ auth_ui = dbc.Container(
                                             "Learn more", id="learn-more-link", href="#"
                                         ),
                                     ],
-                                    className="text-center pe-md-5 text-muted fs-6",
+                                    className="text-center pe-md-5 pt-5 pt-md-0 text-muted fs-6",
                                 ),
                             ],
-                            className="h-50 d-flex justify-content-center align-items-center pe-md-5",
+                            className="h-50 d-flex justify-content-center align-items-center pe-md-5 pt-5 pt-md-0",
                         ),
                     ],
                     className="h-100",
@@ -151,31 +152,7 @@ auth_ui = dbc.Container(
             fluid=True,
             class_name="d-flex justify-content-center flex-column flex-md-row align-items-center h-100 w-100",
         ),
-        html.Footer(
-            [
-                html.Span(
-                    [
-                        "Created by ",
-                        html.A(
-                            "Aaron Ontoyin",
-                            href="https://aaronontoyin.tech/",
-                            target="_blank",
-                            className="mx-1",
-                        ),
-                        html.A("Arnold Bata", href="#", target="", className="mx-1"),
-                        html.A(
-                            "Ferguson Tetteh", href="#", target="", className="mx-1"
-                        ),
-                        html.A(
-                            "Philip Blewushie", href="#", target="", className="mx-1"
-                        ),
-                    ],
-                    className="me-5",
-                )
-            ],
-            className="w-100 text-end text-muted p-4",
-            style={"fontSize": "0.6rem", "position": "absolute", "bottom": "0"},
-        ),
+        get_footer(add_logout_btn=False),
     ],
     id="sign-in-container",
     fluid=True,
