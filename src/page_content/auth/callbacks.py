@@ -18,12 +18,9 @@ def mark_a_status(msg: str, success: bool) -> dbc.Container:
 def register_auth_callbacks(app: Dash):
     @app.callback(
         Output("sign-in-container", "className"),
-        inputs=dict(
-            url_pathname=Input("url", "pathname"),
-            refresh=Input("url", "refresh"),
-        ),
+        inputs=dict(url_pathname=Input("url", "pathname")),
     )
-    def show_hide_page(url_pathname, refresh):
+    def show_hide_page(url_pathname):
         if session.get("authenticated") == True:
             return "main-page-hidden"
         return "main-page-visible"
@@ -50,7 +47,7 @@ def register_auth_callbacks(app: Dash):
         output=dict(
             modal_openned=Output("auth-modal", "is_open", allow_duplicate=True),
             auth_info=Output("auth-modal-body", "children", allow_duplicate=True),
-            url_refresh=Output("url", "refresh", allow_duplicate=True),
+            url_pathname=Output("url", "pathname", allow_duplicate=True),
         ),
         inputs=dict(
             close_auth_modal=Input("auth-modal-close-btn", "n_clicks"),
@@ -79,16 +76,15 @@ def register_auth_callbacks(app: Dash):
 
         return {
             "modal_openned": not closing,
-            "url_refresh": closing,
+            "url_pathname": "/",
             "auth_info": auth_info,
         }
 
     @app.callback(
-        Output("url", "refresh"),
+        Output("url", "pathname"),
         Output("auth-key", "value"),
         Input("logout-btn", "n_clicks"),
     )
     def logout_user(n_clicks):
-        session["authenticated"] = False
-        session["user"] = None
-        return True, ""
+        session.clear()
+        return "/", ""

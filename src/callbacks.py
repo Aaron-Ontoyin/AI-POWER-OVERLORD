@@ -19,9 +19,8 @@ celery_app = Celery(__name__, broker=redis_url, backend=redis_url)
 background_callback_manager = CeleryManager(celery_app, expire=30)
 
 
-def store_data(data_key, data):
-    ex = 60 * 60 * 24 * 7
-    return redis_client.set(data_key, data, ex=ex)
+def store_data(data_key, data, expire=60 * 60 * 24 * 7):
+    return redis_client.set(data_key, data, ex=expire)
 
 
 def retrieve_data(key, jsonize=True):

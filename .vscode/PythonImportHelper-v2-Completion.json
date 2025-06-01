@@ -144,7 +144,23 @@
         "documentation": {}
     },
     {
+        "label": "no_update",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
         "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "ALL",
         "importPath": "dash",
         "description": "dash",
         "isExtraImport": true,
@@ -354,6 +370,22 @@
         "documentation": {}
     },
     {
+        "label": "Literal",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Callable",
         "importPath": "typing",
         "description": "typing",
@@ -370,30 +402,20 @@
         "documentation": {}
     },
     {
+        "label": "PreventUpdate",
+        "importPath": "dash.exceptions",
+        "description": "dash.exceptions",
+        "isExtraImport": true,
+        "detail": "dash.exceptions",
+        "documentation": {}
+    },
+    {
         "label": "dash_mantine_components",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "dash_mantine_components",
         "description": "dash_mantine_components",
         "detail": "dash_mantine_components",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -406,11 +428,20 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
+        "label": "pandas",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "pydantic",
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -419,6 +450,56 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
         "documentation": {}
     },
     {
@@ -543,7 +624,7 @@
         "kind": 2,
         "importPath": "src.page_content.auth.callbacks",
         "description": "src.page_content.auth.callbacks",
-        "peekOfCode": "def mark_a_status(msg: str, success: bool) -> dbc.Container:\n    if success:\n        icon_class = \"fa fa-check-circle me-2 text-success\"\n    else:\n        icon_class = \"fa fa-times-circle me-2 text-danger\"\n    return dbc.Container([html.I(className=icon_class), html.Span(msg)])\ndef register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(",
+        "peekOfCode": "def mark_a_status(msg: str, success: bool) -> dbc.Container:\n    if success:\n        icon_class = \"fa fa-check-circle me-2 text-success\"\n    else:\n        icon_class = \"fa fa-times-circle me-2 text-danger\"\n    return dbc.Container([html.I(className=icon_class), html.Span(msg)])\ndef register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(url_pathname=Input(\"url\", \"pathname\")),",
         "detail": "src.page_content.auth.callbacks",
         "documentation": {}
     },
@@ -552,7 +633,7 @@
         "kind": 2,
         "importPath": "src.page_content.auth.callbacks",
         "description": "src.page_content.auth.callbacks",
-        "peekOfCode": "def register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(\n            url_pathname=Input(\"url\", \"pathname\"),\n            refresh=Input(\"url\", \"refresh\"),\n        ),\n    )\n    def show_hide_page(url_pathname, refresh):\n        if session.get(\"authenticated\") == True:",
+        "peekOfCode": "def register_auth_callbacks(app: Dash):\n    @app.callback(\n        Output(\"sign-in-container\", \"className\"),\n        inputs=dict(url_pathname=Input(\"url\", \"pathname\")),\n    )\n    def show_hide_page(url_pathname):\n        if session.get(\"authenticated\") == True:\n            return \"main-page-hidden\"\n        return \"main-page-visible\"\n    @app.callback(",
         "detail": "src.page_content.auth.callbacks",
         "documentation": {}
     },
@@ -606,7 +687,7 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.callbacks",
         "description": "src.page_content.dashboard.callbacks",
-        "peekOfCode": "def register_dashboard_callbacks(app: Dash, store_data: Callable, retrieve_data):\n    @app.callback(\n        Output(\"dashboard-container\", \"className\"),\n        inputs=dict(\n            url_pathname=Input(\"url\", \"pathname\"),\n            refresh=Input(\"url\", \"refresh\"),\n        ),\n    )\n    def show_hide_page(url_pathname, refresh):\n        if session.get(\"authenticated\") == True:",
+        "peekOfCode": "def register_dashboard_callbacks(\n    app: Dash,\n    store_data: Callable,\n    retrieve_data: Callable,\n):\n    @app.callback(\n        Output(\"dashboard-container\", \"className\"),\n        Input(\"url\", \"pathname\"),\n    )\n    def show_hide_page(url_pathname):",
         "detail": "src.page_content.dashboard.callbacks",
         "documentation": {}
     },
@@ -615,16 +696,52 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.plots",
         "description": "src.page_content.dashboard.plots",
-        "peekOfCode": "def create_consumption_patterns_fig():\n    df.index = pd.to_datetime(df.index)\n    df_long = df.reset_index().melt(\n        id_vars=\"index\", var_name=\"transformer\", value_name=\"consumption\"\n    )\n    df_long.rename(columns={\"index\": \"timestamp\"}, inplace=True)\n    df_total = df_long.groupby(\"timestamp\")[\"consumption\"].sum().reset_index()\n    fig = go.Figure()\n    transformers = df_long[\"transformer\"].unique()\n    for t in transformers:",
+        "peekOfCode": "def create_consumption_patterns_fig(data: pd.DataFrame) -> go.Figure:\n    data.index = pd.to_datetime(data.index)\n    df_long = data.reset_index().melt(\n        id_vars=\"index\", var_name=\"transformer\", value_name=\"consumption\"\n    )\n    df_long.rename(columns={\"index\": \"timestamp\"}, inplace=True)\n    df_total = df_long.groupby(\"timestamp\")[\"consumption\"].sum().reset_index()\n    fig = go.Figure()\n    transformers = df_long[\"transformer\"].unique()\n    for t in transformers:",
         "detail": "src.page_content.dashboard.plots",
         "documentation": {}
     },
     {
-        "label": "df",
-        "kind": 5,
+        "label": "create_trend_analysis_fig",
+        "kind": 2,
         "importPath": "src.page_content.dashboard.plots",
         "description": "src.page_content.dashboard.plots",
-        "peekOfCode": "df = pd.DataFrame(\n    {\n        \"T1\": np.sin(np.arange(0, 10, 0.1)),\n        \"T2\": np.cos(np.arange(0, 10, 0.1)),\n        \"T3\": np.tan(np.arange(0, 10, 0.1)),\n    },\n    index=pd.date_range(start=\"2024-01-01\", periods=100, freq=\"D\"),\n)\ndef create_consumption_patterns_fig():\n    df.index = pd.to_datetime(df.index)",
+        "peekOfCode": "def create_trend_analysis_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef create_freq_analysis_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef create_anomaly_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef get_plots(data: DashboardData) -> Plots:\n    return Plots(\n        num_transformers=data.num_transformers,\n        num_meters=data.num_meters,",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "create_freq_analysis_fig",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "def create_freq_analysis_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef create_anomaly_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef get_plots(data: DashboardData) -> Plots:\n    return Plots(\n        num_transformers=data.num_transformers,\n        num_meters=data.num_meters,\n        consump_ptrns_dict=create_consumption_patterns_fig(\n            data.consumption_pattern_df",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "create_anomaly_fig",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "def create_anomaly_fig(data: pd.DataFrame) -> go.Figure:\n    return create_consumption_patterns_fig(data)\ndef get_plots(data: DashboardData) -> Plots:\n    return Plots(\n        num_transformers=data.num_transformers,\n        num_meters=data.num_meters,\n        consump_ptrns_dict=create_consumption_patterns_fig(\n            data.consumption_pattern_df\n        ).to_dict(),\n        trend_analysis_dict=create_trend_analysis_fig(data.trend_analysis_df).to_dict(),",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "get_plots",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "def get_plots(data: DashboardData) -> Plots:\n    return Plots(\n        num_transformers=data.num_transformers,\n        num_meters=data.num_meters,\n        consump_ptrns_dict=create_consumption_patterns_fig(\n            data.consumption_pattern_df\n        ).to_dict(),\n        trend_analysis_dict=create_trend_analysis_fig(data.trend_analysis_df).to_dict(),\n        freq_analysis_dict=create_freq_analysis_fig(data.freq_analysis_df).to_dict(),\n        anomaly_dict=create_anomaly_fig(data.anomaly_df).to_dict(),",
+        "detail": "src.page_content.dashboard.plots",
+        "documentation": {}
+    },
+    {
+        "label": "text_plot",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.plots",
+        "description": "src.page_content.dashboard.plots",
+        "peekOfCode": "def text_plot(text: str) -> go.Figure:\n    fig = go.Figure()\n    fig.add_annotation(\n        text=text,\n        xref=\"paper\",\n        yref=\"paper\",\n        x=0.5,\n        y=0.5,\n        showarrow=False,\n        font=dict(size=14, color=\"orange\"),",
         "detail": "src.page_content.dashboard.plots",
         "documentation": {}
     },
@@ -633,7 +750,43 @@
         "kind": 6,
         "importPath": "src.page_content.dashboard.schemas",
         "description": "src.page_content.dashboard.schemas",
-        "peekOfCode": "class CoverageArea(BaseModel):\n    id: str\n    type: str\n    name: str\n    description: str\n    sub_areas: List[\"CoverageArea\"] = []\n    @property\n    def badge_color(self):\n        type_ = self.type.lower()\n        match type_:",
+        "peekOfCode": "class CoverageArea(BaseModel):\n    id: str\n    type: str\n    name: str\n    description: str\n    checked: bool = False\n    sub_areas: List[\"CoverageArea\"] = []\n    @property\n    def badge_color(self):\n        type_ = self.type.lower()",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "DashboardData",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class DashboardData(BaseModel):\n    coverage_area_ids: List[str]\n    datetime_start: datetime\n    datetime_end: datetime\n    num_transformers: int\n    num_meters: int\n    consumption_pattern_dict: dict\n    trend_analysis_dict: dict\n    freq_analysis_dict: dict\n    anomaly_dict: dict",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Plots",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class Plots(BaseModel):\n    num_transformers: int\n    num_meters: int\n    consump_ptrns_dict: dict\n    trend_analysis_dict: dict\n    freq_analysis_dict: dict\n    anomaly_dict: dict\n    @property\n    def consump_ptrns_fig(self) -> go.Figure:\n        return go.Figure(self.consump_ptrns_dict)",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SignalStream",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class SignalStream(BaseModel):\n    title: str\n    message: str\n    status: Literal[\"success\", \"warning\", \"danger\", \"info\", \"primary\", \"secondary\"]\n    timestamp: datetime\nclass ChatMessage(BaseModel):\n    id: str\n    message: str\n    sender: Literal[\"user\", \"lyti\"]\n    timestamp: datetime",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMessage",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class ChatMessage(BaseModel):\n    id: str\n    message: str\n    sender: Literal[\"user\", \"lyti\"]\n    timestamp: datetime",
         "detail": "src.page_content.dashboard.schemas",
         "documentation": {}
     },
@@ -642,7 +795,7 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "chat_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                html.P(\n                    \"Explore the distribution data? Just ask Lyti!\", id=\"lyti-greeting\"\n                )\n            ],\n            id=\"chat-canvas\",\n            placement=\"end\",",
+        "peekOfCode": "chat_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                dbc.Container(\n                    [\n                        dbc.Container(\n                            [],\n                            class_name=\"flex-grow-1 m-0 p-0\",\n                            id=\"chat-content\",",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -660,7 +813,16 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "signal_stream_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                dmc.Card(\n                    [\n                        dmc.CardSection(\n                            [\n                                \"Header\",\n                                html.I(",
+        "peekOfCode": "signal_stream_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            id=\"signal-stream-canvas\",\n            scrollable=True,\n            title=html.Div(\n                [\n                    html.I(\n                        className=\"fa fa-bell text-muted me-3\",\n                        **{\"aria-hidden\": \"true\"},",
+        "detail": "src.page_content.dashboard.ui",
+        "documentation": {}
+    },
+    {
+        "label": "fullscreen_graph_modal",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "fullscreen_graph_modal = dbc.Modal(\n    [dbc.ModalHeader(), dbc.ModalBody(dcc.Graph(id=\"fullscreen-graph\"))],\n    id=\"graph-fullscreen-modal\",\n    fullscreen=True,\n)\ndashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Alert(",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -669,7 +831,7 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "dashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Row(\n                    [\n                        dbc.Col(\n                            dbc.Card(\n                                [\n                                    dbc.CardBody(",
+        "peekOfCode": "dashboard_ui = dbc.Container(\n    [\n        dbc.Container(\n            [\n                dbc.Alert(\n                    duration=5000,\n                    dismissable=True,\n                    fade=True,\n                    is_open=False,\n                    color=\"warning\",",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -678,7 +840,34 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.waiter",
         "description": "src.page_content.dashboard.waiter",
-        "peekOfCode": "def get_coverage_areas() -> List[CoverageArea]:\n    \"\"\"\n    Get the coverage areas from the api\n    \"\"\"\n    return [\n        CoverageArea(\n            id=\"1\",\n            type=\"Country\",\n            name=\"Ghana\",\n            description=\"Ghana is a country in West Africa.\",",
+        "peekOfCode": "def get_coverage_areas() -> List[CoverageArea]:\n    \"\"\"\n    Get the coverage areas from the api\n    \"\"\"\n    time.sleep(2)\n    return [\n        CoverageArea(\n            id=\"1\",\n            type=\"Country\",\n            name=\"Ghana\",",
+        "detail": "src.page_content.dashboard.waiter",
+        "documentation": {}
+    },
+    {
+        "label": "get_dashboard_data",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.waiter",
+        "description": "src.page_content.dashboard.waiter",
+        "peekOfCode": "def get_dashboard_data(\n    datetime_start: datetime,\n    datetime_end: datetime,\n    coverage_areas_ids: List[str],\n) -> DashboardData:\n    \"\"\"\n    Get the data for all graphs and infos given some filters.\n    Args:\n        datetime_start: The start date and time of the data to fetch.\n        datetime_end: The end date and time of the data to fetch.",
+        "detail": "src.page_content.dashboard.waiter",
+        "documentation": {}
+    },
+    {
+        "label": "get_signal_streams",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.waiter",
+        "description": "src.page_content.dashboard.waiter",
+        "peekOfCode": "def get_signal_streams() -> List[SignalStream]:\n    time.sleep(1)\n    return [\n        SignalStream(\n            title=\"Transformer 1 stopped working\",\n            message=\"Transformer 1 stopped working at 10:00 AM. Please check the transformer.\",\n            status=\"danger\",\n            timestamp=datetime.now() - timedelta(hours=1),\n        ),\n        SignalStream(",
+        "detail": "src.page_content.dashboard.waiter",
+        "documentation": {}
+    },
+    {
+        "label": "get_chat_messages",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.waiter",
+        "description": "src.page_content.dashboard.waiter",
+        "peekOfCode": "def get_chat_messages(\n    thread_id: str, new_message: str | None = None\n) -> List[ChatMessage]:\n    return [\n        ChatMessage(\n            id=\"1\",\n            message=\"Hello, how are you?\",\n            sender=\"user\",\n            timestamp=datetime.now(),\n        ),",
         "detail": "src.page_content.dashboard.waiter",
         "documentation": {}
     },
@@ -714,7 +903,7 @@
         "kind": 2,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "def store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:",
+        "peekOfCode": "def store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:\n        print(e)",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -741,7 +930,7 @@
         "kind": 5,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)\nredis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7",
+        "peekOfCode": "redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)\nredis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -750,7 +939,7 @@
         "kind": 5,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "redis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)",
+        "peekOfCode": "redis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -759,7 +948,7 @@
         "kind": 5,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "celery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None",
+        "peekOfCode": "celery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -768,7 +957,7 @@
         "kind": 5,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "background_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data):\n    ex = 60 * 60 * 24 * 7\n    return redis_client.set(data_key, data, ex=ex)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data",
+        "peekOfCode": "background_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -831,7 +1020,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"memory\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,\n    class_name=\"d-flex flex-column p-0 m-0\",",
+        "peekOfCode": "layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"session\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        dcc.Interval(id=\"signal-stream-interval\", interval=60 * 1000, n_intervals=1),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,",
         "detail": "app",
         "documentation": {}
     },

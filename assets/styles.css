@@ -18,6 +18,20 @@
     visibility: hidden;
 }
 
+#general-alert {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 300px;
+    z-index: 9999;
+}
+
+#general-alert .btn-close {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.6rem;
+}
+
 #dashboard-container {
     background-color: aliceblue;
 }
@@ -77,6 +91,22 @@
     padding: 5px 5px;
     border: 2px solid #00c3ea40;
     border-radius: 10px;
+    min-height: 240px;
+    position: relative;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #008aa5;
+    transition: transform 0.3s ease-out;
+    font-size: 0.7rem;
 }
 
 .main-svg {
@@ -86,13 +116,19 @@
 .metric-item {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: start;
 }
-
 
 .metric-value {
     font-size: 1.4rem;
     font-weight: 600;
     color: #008aa5;
+}
+
+.metrics-spinner .dash-spinner,
+.metrics-spinner .dash-default-spinner {
+    scale: 0.5 !important;
 }
 
 .areas-covered-wrap {
@@ -106,6 +142,7 @@
 .area-covered {
     background-color: #034a4b16;
     padding: 4px 10px;
+    height: fit-content;
     font-size: 0.8rem;
     border-radius: 6px;
     color: #333;
@@ -122,6 +159,11 @@
     color: #fff;
 }
 
+.signal-stream-timestamp {
+    font-size: 0.7rem;
+    align-self: flex-end;
+}
+
 #ask-lyti {
     cursor: pointer;
     transition: transform 0.3s ease-out;
@@ -135,6 +177,29 @@
 .lyti-img {
     scale: 0.8;
     animation: lyti-movement 10s linear infinite;
+}
+
+#chat-send-btn {
+    background-color: transparent;
+    border-color: #a3a4a4;
+    color: #a3a4a4;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chat-send-btn:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#chat-input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #a3a4a4;
 }
 
 @keyframes lyti-movement {

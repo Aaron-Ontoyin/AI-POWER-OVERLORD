@@ -3,14 +3,20 @@ This module contains the functions to fetch data from the api
 """
 
 from typing import List
+from datetime import datetime, timedelta
+import pandas as pd
+import numpy as np
+import random
+import time
 
-from .schemas import CoverageArea
+from .schemas import CoverageArea, DashboardData, SignalStream, ChatMessage
 
 
 def get_coverage_areas() -> List[CoverageArea]:
     """
     Get the coverage areas from the api
     """
+    time.sleep(2)
     return [
         CoverageArea(
             id="1",
@@ -114,5 +120,131 @@ def get_coverage_areas() -> List[CoverageArea]:
                     sub_areas=[],
                 ),
             ],
+        ),
+    ]
+
+
+def get_dashboard_data(
+    datetime_start: datetime,
+    datetime_end: datetime,
+    coverage_areas_ids: List[str],
+) -> DashboardData:
+    """
+    Get the data for all graphs and infos given some filters.
+
+    Args:
+        datetime_start: The start date and time of the data to fetch.
+        datetime_end: The end date and time of the data to fetch.
+        coverage_areas_ids: The ids of the coverage areas to fetch data for.
+
+    Returns:
+        The dashboard data.
+    """
+    y_dist = random.choice([(0, 10, 0.1), (10, 30, 0.1), (30, 90, 3), (25, 50, 0.5)])
+    periods = len(np.arange(y_dist[0], y_dist[1], y_dist[2]))
+    df = pd.DataFrame(
+        {
+            "T1": np.sin(np.arange(y_dist[0], y_dist[1], y_dist[2])),
+            "T2": np.cos(np.arange(y_dist[0], y_dist[1], y_dist[2])),
+            "T3": np.tan(np.arange(y_dist[0], y_dist[1], y_dist[2])),
+        },
+        index=pd.date_range(start="2024-01-01", periods=periods, freq="D"),
+    )
+    time.sleep(2)
+
+    return DashboardData(
+        coverage_area_ids=coverage_areas_ids,
+        datetime_start=datetime_start,
+        datetime_end=datetime_end,
+        num_transformers=random.choice([10, 15, 20, 40]),
+        num_meters=random.choice([50, 100, 200, 1000]),
+        consumption_pattern_dict=df.to_dict(),
+        trend_analysis_dict=df.to_dict(),
+        freq_analysis_dict=df.to_dict(),
+        anomaly_dict=df.to_dict(),
+    )
+
+
+def get_signal_streams() -> List[SignalStream]:
+    time.sleep(1)
+    return [
+        SignalStream(
+            title="Transformer 1 stopped working",
+            message="Transformer 1 stopped working at 10:00 AM. Please check the transformer.",
+            status="danger",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+        SignalStream(
+            title="Transformer 2 is working again",
+            message="Transformer 2 is working again at 10:00 AM. Please check the transformer.",
+            status="success",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+        SignalStream(
+            title="Illegal connections at Tongo Village",
+            message="Illegal connections at Tongo Village at 10:00 AM. Please check the transformer.",
+            status="warning",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+        SignalStream(
+            title="Transformer 1 is working again",
+            message="Transformer 1 is working again at 10:00 AM. Please check the transformer.",
+            status="info",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+        SignalStream(
+            title="Transformer 1 is working again",
+            message="Transformer 1 is working again at 10:00 AM. Please check the transformer.",
+            status="primary",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+        SignalStream(
+            title="Transformer 1 is working again",
+            message="Transformer 1 is working again at 10:00 AM. Please check the transformer.",
+            status="secondary",
+            timestamp=datetime.now() - timedelta(hours=1),
+        ),
+    ]
+
+
+def get_chat_messages(
+    thread_id: str, new_message: str | None = None
+) -> List[ChatMessage]:
+    return [
+        ChatMessage(
+            id="1",
+            message="Hello, how are you?",
+            sender="user",
+            timestamp=datetime.now(),
+        ),
+        ChatMessage(
+            id="2",
+            message="I'm Lyti, your AI assistant. How can I help you today?",
+            sender="lyti",
+            timestamp=datetime.now(),
+        ),
+        ChatMessage(
+            id="3",
+            message="Please tell me about the data",
+            sender="user",
+            timestamp=datetime.now(),
+        ),
+        ChatMessage(
+            id="4",
+            message="The data is about the electricity consumption of the transformers in the Tongo District.",
+            sender="lyti",
+            timestamp=datetime.now(),
+        ),
+        ChatMessage(
+            id="5",
+            message="what is the total consumption of the transformers in the Tongo District?",
+            sender="user",
+            timestamp=datetime.now(),
+        ),
+        ChatMessage(
+            id="6",
+            message="The total consumption of the transformers in the Tongo District is 1000 kWh. Do you want to know more about the data? I can help you with that. I can also help you with the data analysis.",
+            sender="lyti",
+            timestamp=datetime.now(),
         ),
     ]

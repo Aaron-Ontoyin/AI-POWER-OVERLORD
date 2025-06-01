@@ -35,8 +35,9 @@ app = Dash(
 layout = dbc.Container(
     [
         dcc.Location(id="url", refresh=False),
-        dcc.Store(id="local-store", storage_type="memory", data={}),
+        dcc.Store(id="local-store", storage_type="session", data={}),
         html.Div(id="dummy-output", className="d-none"),
+        dcc.Interval(id="signal-stream-interval", interval=60 * 1000, n_intervals=1),
         navbar_ui,
         page_content_ui,
     ],

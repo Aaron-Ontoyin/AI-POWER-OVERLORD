@@ -2,24 +2,15 @@
 This module contains the functions to create the plots for the dashboard
 """
 
-import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
+import pandas as pd
+
+from .schemas import Plots, DashboardData
 
 
-df = pd.DataFrame(
-    {
-        "T1": np.sin(np.arange(0, 10, 0.1)),
-        "T2": np.cos(np.arange(0, 10, 0.1)),
-        "T3": np.tan(np.arange(0, 10, 0.1)),
-    },
-    index=pd.date_range(start="2024-01-01", periods=100, freq="D"),
-)
-
-
-def create_consumption_patterns_fig():
-    df.index = pd.to_datetime(df.index)
-    df_long = df.reset_index().melt(
+def create_consumption_patterns_fig(data: pd.DataFrame) -> go.Figure:
+    data.index = pd.to_datetime(data.index)
+    df_long = data.reset_index().melt(
         id_vars="index", var_name="transformer", value_name="consumption"
     )
     df_long.rename(columns={"index": "timestamp"}, inplace=True)
@@ -67,4 +58,45 @@ def create_consumption_patterns_fig():
         hovermode="x unified",
         transition_duration=500,
     )
+
+    return fig
+
+
+def create_trend_analysis_fig(data: pd.DataFrame) -> go.Figure:
+    return create_consumption_patterns_fig(data)
+
+
+def create_freq_analysis_fig(data: pd.DataFrame) -> go.Figure:
+    return create_consumption_patterns_fig(data)
+
+
+def create_anomaly_fig(data: pd.DataFrame) -> go.Figure:
+    return create_consumption_patterns_fig(data)
+
+
+def get_plots(data: DashboardData) -> Plots:
+    return Plots(
+        num_transformers=data.num_transformers,
+        num_meters=data.num_meters,
+        consump_ptrns_dict=create_consumption_patterns_fig(
+            data.consumption_pattern_df
+        ).to_dict(),
+        trend_analysis_dict=create_trend_analysis_fig(data.trend_analysis_df).to_dict(),
+        freq_analysis_dict=create_freq_analysis_fig(data.freq_analysis_df).to_dict(),
+        anomaly_dict=create_anomaly_fig(data.anomaly_df).to_dict(),
+    )
+
+
+def text_plot(text: str) -> go.Figure:
+    fig = go.Figure()
+    fig.add_annotation(
+        text=text,
+        xref="paper",
+        yref="paper",
+        x=0.5,
+        y=0.5,
+        showarrow=False,
+        font=dict(size=14, color="orange"),
+    )
+    fig.update_layout(xaxis=dict(visible=False), yaxis=dict(visible=False))
     return fig
