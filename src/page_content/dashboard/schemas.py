@@ -1,4 +1,4 @@
-from typing import List, Literal
+from typing import List, Literal, Dict
 from datetime import datetime
 
 from pydantic import BaseModel
@@ -97,3 +97,33 @@ class ChatMessage(BaseModel):
     message: str
     sender: Literal["user", "lyti"]
     timestamp: datetime
+
+
+class ChatThread(BaseModel):
+    id: str
+    title: str
+    messages: List[ChatMessage] | None = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class ChatThreads(BaseModel):
+    threads: Dict[str, List[ChatThread]]
+
+    def get_sorted_threads(self, reverse: bool = True) -> Dict[str, List[ChatThread]]:
+        """
+        Sort the threads by date in order.
+
+        Args:
+            reverse (bool): If True, the threads will be sorted in descending order.
+                If False, the threads will be sorted in ascending order.
+
+        Returns:
+            A dictionary of threads sorted by date.
+        """
+        return {
+            date: sorted(threads, key=lambda x: x.updated_at, reverse=reverse)
+            for date, threads in sorted(
+                self.threads.items(), key=lambda x: x[0], reverse=reverse
+            )
+        }

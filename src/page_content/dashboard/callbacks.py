@@ -1,7 +1,7 @@
 from typing import Callable, List
 
 from flask import session
-from dash import Dash, Output, Input, State, ctx, no_update, html, ALL
+from dash import Dash, Output, Input, State, ctx, no_update, html, ALL, Patch
 from dash.exceptions import PreventUpdate
 import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
@@ -10,17 +10,15 @@ from .waiter import (
     get_coverage_areas,
     get_dashboard_data,
     get_signal_streams,
-    get_chat_messages,
+    get_chat_thread,
+    get_chat_threads,
 )
 from .schemas import CoverageArea, Plots, ChatMessage
 from .plots import get_plots, text_plot
+from .utils import readable_when
 
 
-def register_dashboard_callbacks(
-    app: Dash,
-    store_data: Callable,
-    retrieve_data: Callable,
-):
+def register_dashboard_callbacks(app: Dash):
     @app.callback(
         Output("dashboard-container", "className"),
         Input("url", "pathname"),
@@ -31,14 +29,24 @@ def register_dashboard_callbacks(
         return "main-page-hidden"
 
     @app.callback(
-        Output("chat-canvas", "is_open"),
-        Input("ask-lyti", "n_clicks"),
-        State("chat-canvas", "is_open"),
+        output=dict(
+            is_open=Output("chat-canvas", "is_open"),
+            current_chat_title=Output(
+                "current-chat-title", "children", allow_duplicate=True
+            ),
+            current_chat_id=Output("current-chat-id", "children", allow_duplicate=True),
+        ),
+        inputs=dict(
+            ask_lyti_btn=Input("ask-lyti", "n_clicks"),
+            local_store=State("local-store", "data"),
+        ),
     )
-    def toggle_offcanvas_scrollable(n1, is_open):
-        if n1:
-            return not is_open
-        return is_open
+    def open_chat_offcanvas(ask_lyti_btn, local_store):
+        return {
+            "is_open": True,
+            "current_chat_title": local_store["current_chat_title"],
+            "current_chat_id": local_store["current_chat_id"],
+        }
 
     @app.callback(
         Output("coverage-areas-modal", "is_open"),
@@ -319,16 +327,28 @@ def register_dashboard_callbacks(
         }
 
     @app.callback(
-        Output("signal-stream-canvas", "children"),
-        Input("signal-stream-interval", "n_intervals"),
-        prevent_initial_call=True,
+        output=dict(
+            signal_streams=Output("signal-stream-canvas", "children"),
+            num_signal_streams=Output("signal-stream-badge", "children"),
+        ),
+        inputs=dict(
+            signal_stream_interval=Input("signal-stream-interval", "n_intervals")
+        ),
+        prevent_initial_call=False,
     )
-    def update_signal_stream(interval):
+    def update_signal_stream(signal_stream_interval):
         signal_streams = get_signal_streams()
-        if not signal_streams:
-            return "No signal streams."
+        num_signal_streams = len(signal_streams)
+        if num_signal_streams == 0:
+            return {
+                "signal_streams": "No signal streams.",
+                "num_signal_streams": 0,
+            }
 
-        return [
+        if num_signal_streams > 99:
+            num_signal_streams = "99+"
+
+        cards = [
             dmc.Card(
                 [
                     dmc.CardSection(
@@ -353,11 +373,16 @@ def register_dashboard_callbacks(
             )
             for stream in signal_streams
         ]
+        return {
+            "signal_streams": cards,
+            "num_signal_streams": num_signal_streams,
+        }
 
     def create_chat_message(message: ChatMessage):
-        align = "start" if message.sender == "user" else "end"
-        card_color = "primary" if message.sender == "user" else "light"
-        text_color = "white" if message.sender == "user" else "dark"
+        align = "end" if message.sender == "user" else "start"
+        card_color = (
+            {"background-color": "#adb8c66b"} if message.sender == "user" else {}
+        )
         return dbc.Row(
             dbc.Col(
                 dbc.Card(
@@ -366,54 +391,174 @@ def register_dashboard_callbacks(
                             [
                                 html.Div(
                                     message.message,
-                                    className=f"mb-2 text-{text_color} p-0 m-0",
+                                    className=f"mb-2 text-dark p-0 m-0",
                                     style={
                                         "whiteSpace": "pre-line",
                                         "fontSize": "0.9rem",
                                         "textAlign": "justify",
                                     },
-                                ),
-                                html.Div(
-                                    [
-                                        html.Small(
-                                            message.timestamp.strftime(
-                                                "%B %d, %I:%M %p"
-                                            ),
-                                            className="text-muted m-0 p-0",
-                                            style={"fontSize": "0.8rem"},
-                                        ),
-                                    ],
-                                    className="d-flex align-items-end justify-content-end p-0 m-0",
-                                ),
+                                )
                             ],
                             className="p-0 m-0",
                         )
                     ],
-                    color=card_color,
-                    className="mb-2 p-2 m-0",
+                    className="mb-2 p-2 m-0 border-0",
                     style={
                         "maxWidth": "90%",
                         "marginLeft": "auto" if align == "end" else 0,
                         "marginRight": "auto" if align == "start" else 0,
                         "borderRadius": "8px",
+                        **card_color,
                     },
                 ),
                 width={"size": 11, "offset": 1} if align == "end" else 11,
                 className=f"d-flex justify-content-{align}",
-            )
+            ),
+            class_name="mb-2",
         )
 
     @app.callback(
-        Output("chat-content", "children"),
-        Input("chat-send-btn", "n_clicks"),
-        State("chat-input", "value"),
+        output=dict(
+            chat_content=Output("chat-content", "children"),
+            local_store=Output("local-store", "data", allow_duplicate=True),
+            current_chat_title=Output("current-chat-title", "children"),
+            current_chat_id=Output("current-chat-id", "children"),
+        ),
+        inputs=dict(
+            n_clicks=Input("chat-send-icon", "n_clicks"),
+            new_message=State("chat-input", "value"),
+            datetime_start=State("datetime-picker-start", "value"),
+            datetime_end=State("datetime-picker-end", "value"),
+            local_store=State("local-store", "data"),
+            thread_id=State("current-chat-id", "children"),
+        ),
+        running=[
+            (
+                Output("chat-send-icon", "className"),
+                "d-none",
+                "fa fa-arrow-up text-muted",
+            ),
+            (
+                Output("chat-cancel-icon", "className"),
+                "fa fa-stop text-muted",
+                "d-none",
+            ),
+        ],
+        cancel=Input("chat-cancel-icon", "n_clicks"),
+        background=True,
+        prevent_initial_call=True,
     )
-    def send_message(n_clicks, message):
-        messages = get_chat_messages(thread_id="1")
-        if not messages:
-            return dbc.Container(
-                "Want to explore the data? Just ask Lyti!",
-                id="lyti-greeting",
-                className="m-0 p-0",
+    def send_message(
+        n_clicks,
+        new_message,
+        datetime_start,
+        datetime_end,
+        local_store,
+        thread_id,
+    ):
+        ca_ids = [ca_id for ca_id, _ in local_store.get("checked_ca_ids", [])]
+        thread = get_chat_thread(
+            thread_id=thread_id,
+            new_message=new_message,
+            datetime_start=datetime_start,
+            datetime_end=datetime_end,
+            coverage_areas_ids=ca_ids,
+        )
+        local_store["current_chat_id"] = thread.id
+        local_store["current_chat_title"] = thread.title
+
+        return {
+            "chat_content": [create_chat_message(msg) for msg in thread.messages],
+            "local_store": local_store,
+            "current_chat_title": thread.title,
+            "current_chat_id": thread.id,
+        }
+
+    @app.callback(
+        Output("chat-history-modal", "is_open"),
+        Input("threads-btn", "n_clicks"),
+    )
+    def toggle_chat_history_modal(n_clicks):
+        return True
+
+    @app.callback(
+        Output("chat-history-modal-body", "children"),
+        Input("chat-history-modal", "is_open"),
+    )
+    def update_chat_history_modal_body(is_open):
+        if not is_open:
+            raise PreventUpdate
+
+        modal_body_items = []
+        chat_histories = get_chat_threads()
+        for date_, threads in chat_histories.get_sorted_threads().items():
+            modal_body_items.append(
+                dbc.Container(
+                    [
+                        html.Div(readable_when(date_), className="fs-6 mb-2"),
+                        dbc.Container(
+                            [
+                                html.Div(
+                                    [
+                                        html.Div(
+                                            thread.title,
+                                            id={
+                                                "type": "chat-thread-item",
+                                                "thread_id": thread.id,
+                                                "thread_title": thread.title,
+                                            },
+                                            className="chat-thread-title text-muted fs-6",
+                                        ),
+                                    ]
+                                )
+                                for thread in threads
+                            ],
+                        ),
+                    ],
+                    className="mb-3 pb-2",
+                    style={"borderBottom": "1px solid #e0e0e0"},
+                )
             )
-        return [create_chat_message(message) for message in messages]
+
+        return modal_body_items
+
+    @app.callback(
+        output=dict(
+            current_chat_title=Output(
+                "current-chat-title", "children", allow_duplicate=True
+            ),
+            current_chat_id=Output("current-chat-id", "children", allow_duplicate=True),
+            chat_history_modal_is_open=Output(
+                "chat-history-modal", "is_open", allow_duplicate=True
+            ),
+            local_store=Output("local-store", "data", allow_duplicate=True),
+        ),
+        inputs=dict(
+            new_chat_btn=Input("new-chat-btn", "n_clicks"),
+            thread_item_n_clicks=Input(
+                {"type": "chat-thread-item", "thread_id": ALL, "thread_title": ALL},
+                "n_clicks",
+            ),
+        ),
+    )
+    def update_current_chat(new_chat_btn, thread_item_n_clicks):
+        if ctx.triggered_id == "new-chat-btn":
+            return {
+                "current_chat_title": "New Chat",
+                "current_chat_id": "new-chat",
+                "chat_history_modal_is_open": False,
+                "local_store": no_update,
+            }
+        if ctx.triggered_id["type"] == "chat-thread-item":
+            if not any(thread_item_n_clicks):
+                raise PreventUpdate
+            local_store = Patch()
+            local_store["current_chat_id"] = ctx.triggered_id["thread_id"]
+            local_store["current_chat_title"] = ctx.triggered_id["thread_title"]
+
+            return {
+                "current_chat_title": ctx.triggered_id["thread_title"],
+                "current_chat_id": ctx.triggered_id["thread_id"],
+                "chat_history_modal_is_open": False,
+                "local_store": local_store,
+            }

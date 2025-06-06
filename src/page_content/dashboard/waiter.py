@@ -2,6 +2,7 @@
 This module contains the functions to fetch data from the api
 """
 
+import dash.exceptions
 from typing import List
 from datetime import datetime, timedelta
 import pandas as pd
@@ -9,7 +10,14 @@ import numpy as np
 import random
 import time
 
-from .schemas import CoverageArea, DashboardData, SignalStream, ChatMessage
+from .schemas import (
+    CoverageArea,
+    DashboardData,
+    SignalStream,
+    ChatMessage,
+    ChatThread,
+    ChatThreads,
+)
 
 
 def get_coverage_areas() -> List[CoverageArea]:
@@ -207,44 +215,146 @@ def get_signal_streams() -> List[SignalStream]:
     ]
 
 
-def get_chat_messages(
-    thread_id: str, new_message: str | None = None
-) -> List[ChatMessage]:
-    return [
-        ChatMessage(
+def get_chat_thread(
+    thread_id: str,
+    new_message: str | None = None,
+    datetime_start: datetime | str | None = None,
+    datetime_end: datetime | str | None = None,
+    coverage_areas_ids: List[str] | None = None,
+) -> ChatThread:
+    """
+    Get a chat thread with messages.
+
+    Args:
+        thread_id: The id of the chat thread.
+        new_message: The new message to add to the chat thread.
+        datetime_start: The start date and time of the data to fetch for context.
+        datetime_end: The end date and time of the data to fetch for context.
+        coverage_areas_ids: The ids of the coverage areas to fetch data for context.
+
+    Returns:
+        A chat thread with messages.
+    """
+    time.sleep(3)
+    lyti_res = random.choice(
+        [
+            ChatMessage(
+                id="1",
+                message="Hello, how are you?",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+            ChatMessage(
+                id="2",
+                message="I'm Lyti, your AI assistant. How can I help you today?",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+            ChatMessage(
+                id="3",
+                message="Please tell me about the data",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+            ChatMessage(
+                id="4",
+                message="The data is about the electricity consumption of the transformers in the Tongo District.",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+            ChatMessage(
+                id="5",
+                message="what is the total consumption of the transformers in the Tongo District?",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+            ChatMessage(
+                id="6",
+                message="The total consumption of the transformers in the Tongo District is 1000 kWh. Do you want to know more about the data? I can help you with that. I can also help you with the data analysis.",
+                sender="lyti",
+                timestamp=datetime.now(),
+            ),
+        ]
+    )
+    return ChatThread(
+        id=thread_id,
+        title=f"Chat Thread {thread_id}",
+        messages=[
+            ChatMessage(
+                id="user-message",
+                message=new_message or "Hello, how are you?",
+                sender="user",
+                timestamp=datetime.now(),
+            ),
+            lyti_res,
+        ],
+        created_at=datetime.now() - timedelta(days=1),
+        updated_at=datetime.now() - timedelta(days=1),
+    )
+
+
+def get_chat_threads() -> ChatThreads:
+    """
+    Return chat threads for a user. Does not include the messages in the threads.
+
+    Returns:
+        ChatThreads: A list of chat threads.
+    """
+    chat_threads = [
+        ChatThread(
             id="1",
-            message="Hello, how are you?",
-            sender="user",
-            timestamp=datetime.now(),
+            title="Transformer 1 stopped working",
+            created_at=datetime.now() - timedelta(days=2),
+            updated_at=datetime.now() - timedelta(days=2),
         ),
-        ChatMessage(
+        ChatThread(
             id="2",
-            message="I'm Lyti, your AI assistant. How can I help you today?",
-            sender="lyti",
-            timestamp=datetime.now(),
+            title="Meaning of the data",
+            created_at=datetime.now() - timedelta(days=1),
+            updated_at=datetime.now() - timedelta(days=1),
         ),
-        ChatMessage(
+        ChatThread(
             id="3",
-            message="Please tell me about the data",
-            sender="user",
-            timestamp=datetime.now(),
+            title="Meaning of the data",
+            created_at=datetime.now() - timedelta(days=1),
+            updated_at=datetime.now() - timedelta(days=1),
         ),
-        ChatMessage(
+        ChatThread(
             id="4",
-            message="The data is about the electricity consumption of the transformers in the Tongo District.",
-            sender="lyti",
-            timestamp=datetime.now(),
+            title="Meaning of the data",
+            created_at=datetime.now() - timedelta(days=1),
+            updated_at=datetime.now() - timedelta(days=1),
         ),
-        ChatMessage(
+        ChatThread(
             id="5",
-            message="what is the total consumption of the transformers in the Tongo District?",
-            sender="user",
-            timestamp=datetime.now(),
+            title="Total consumption in Tongo District?",
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
         ),
-        ChatMessage(
+        ChatThread(
             id="6",
-            message="The total consumption of the transformers in the Tongo District is 1000 kWh. Do you want to know more about the data? I can help you with that. I can also help you with the data analysis.",
-            sender="lyti",
-            timestamp=datetime.now(),
+            title="Total consumption in Tongo District?",
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
+        ),
+        ChatThread(
+            id="7",
+            title="Total consumption in Tongo District?",
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
+        ),
+        ChatThread(
+            id="8",
+            title="Total consumption in Tongo District?",
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
         ),
     ]
+    threads = {}
+    for chat_thread in chat_threads:
+        date = chat_thread.updated_at.strftime("%Y-%m-%d")
+        if date not in threads:
+            threads[date] = [chat_thread]
+        else:
+            threads[date].append(chat_thread)
+    return ChatThreads(threads=threads)

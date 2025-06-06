@@ -1,8 +1,9 @@
-from dash import Dash, dcc, html
+from dash import Dash, dcc, html, DiskcacheManager
 import dash_bootstrap_components as dbc
-from flask import Flask, session
+from flask import Flask
 from flask_session import Session
 import dash_mantine_components as dmc
+import diskcache
 
 from src.callbacks import register_callbacks
 from src.navbar import navbar_ui
@@ -22,6 +23,9 @@ server.config["SESSION_TYPE"] = settings.SESSION_TYPE
 server.config["SESSION_PERMANENT"] = settings.SESSION_PERMANENT
 Session(server)
 
+cache = diskcache.Cache("./cache")
+background_callback_manager = DiskcacheManager(cache)
+
 
 app = Dash(
     __name__,
@@ -30,6 +34,7 @@ app = Dash(
     suppress_callback_exceptions=True,
     external_stylesheets=external_stylesheets,
     prevent_initial_callbacks=True,
+    background_callback_manager=background_callback_manager,
 )
 
 layout = dbc.Container(
@@ -37,7 +42,7 @@ layout = dbc.Container(
         dcc.Location(id="url", refresh=False),
         dcc.Store(id="local-store", storage_type="session", data={}),
         html.Div(id="dummy-output", className="d-none"),
-        dcc.Interval(id="signal-stream-interval", interval=60 * 1000, n_intervals=1),
+        dcc.Interval(id="signal-stream-interval", interval=3 * 60 * 1000),
         navbar_ui,
         page_content_ui,
     ],
@@ -54,4 +59,4 @@ app.layout = dmc.MantineProvider(children=layout)
 register_callbacks(app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

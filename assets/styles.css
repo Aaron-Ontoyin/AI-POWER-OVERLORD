@@ -49,6 +49,7 @@
     border-radius: 8px;
     background-color: #fafafa;
     box-shadow: none;
+    /* background-color: #adb8c66b; */
 }
 
 .setting-dtp input:focus {
@@ -137,6 +138,7 @@
     gap: 4px;
     overflow: scroll;
     height: 85px;
+    border: none;
 }
 
 .area-covered {
@@ -177,6 +179,54 @@
 .lyti-img {
     scale: 0.8;
     animation: lyti-movement 10s linear infinite;
+}
+
+#threads-btn,
+#new-chat-btn {
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+
+#threads-btn:hover,
+#new-chat-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.chat-thread-title {
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+
+.chat-thread-title:hover {
+    background-color: #f0f0f0;
+}
+
+#chat-cancel-icon {
+    animation: cancel-pulse 2.5s infinite;
+}
+
+@keyframes cancel-pulse {
+    0% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+.offcanvas-header {
+    padding-bottom: 0;
+}
+
+.offcanvas-body {
+    padding-top: 1rem;
 }
 
 #chat-send-btn {
@@ -291,3 +341,6 @@
     font-style: italic;
     color: grey;
 }
+
+
+/* Medium devices (tablets, 768px and up) */

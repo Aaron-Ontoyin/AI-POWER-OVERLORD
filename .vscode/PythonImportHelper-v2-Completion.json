@@ -168,6 +168,14 @@
         "documentation": {}
     },
     {
+        "label": "Patch",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
         "label": "html",
         "importPath": "dash",
         "description": "dash",
@@ -224,14 +232,6 @@
         "documentation": {}
     },
     {
-        "label": "CeleryManager",
-        "importPath": "dash",
-        "description": "dash",
-        "isExtraImport": true,
-        "detail": "dash",
-        "documentation": {}
-    },
-    {
         "label": "Dash",
         "importPath": "dash",
         "description": "dash",
@@ -249,6 +249,14 @@
     },
     {
         "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "DiskcacheManager",
         "importPath": "dash",
         "description": "dash",
         "isExtraImport": true,
@@ -296,14 +304,6 @@
         "documentation": {}
     },
     {
-        "label": "session",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
         "label": "dash_bootstrap_components",
         "kind": 6,
         "isExtraImport": true,
@@ -338,14 +338,6 @@
         "documentation": {}
     },
     {
-        "label": "settings",
-        "importPath": "settings",
-        "description": "settings",
-        "isExtraImport": true,
-        "detail": "settings",
-        "documentation": {}
-    },
-    {
         "label": "Callable",
         "importPath": "typing",
         "description": "typing",
@@ -378,6 +370,14 @@
         "documentation": {}
     },
     {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -399,6 +399,15 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "dash.exceptions",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dash.exceptions",
+        "description": "dash.exceptions",
+        "detail": "dash.exceptions",
         "documentation": {}
     },
     {
@@ -477,11 +486,43 @@
         "documentation": {}
     },
     {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
         "isExtraImport": true,
         "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "parse",
+        "importPath": "dateutil.parser",
+        "description": "dateutil.parser",
+        "isExtraImport": true,
+        "detail": "dateutil.parser",
         "documentation": {}
     },
     {
@@ -503,37 +544,20 @@
         "documentation": {}
     },
     {
-        "label": "Celery",
-        "importPath": "celery",
-        "description": "celery",
-        "isExtraImport": true,
-        "detail": "celery",
-        "documentation": {}
-    },
-    {
-        "label": "redis",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "redis",
-        "description": "redis",
-        "detail": "redis",
-        "documentation": {}
-    },
-    {
-        "label": "orjson",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "orjson",
-        "description": "orjson",
-        "detail": "orjson",
-        "documentation": {}
-    },
-    {
         "label": "Session",
         "importPath": "flask_session",
         "description": "flask_session",
         "isExtraImport": true,
         "detail": "flask_session",
+        "documentation": {}
+    },
+    {
+        "label": "diskcache",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "diskcache",
+        "description": "diskcache",
+        "detail": "diskcache",
         "documentation": {}
     },
     {
@@ -687,7 +711,7 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.callbacks",
         "description": "src.page_content.dashboard.callbacks",
-        "peekOfCode": "def register_dashboard_callbacks(\n    app: Dash,\n    store_data: Callable,\n    retrieve_data: Callable,\n):\n    @app.callback(\n        Output(\"dashboard-container\", \"className\"),\n        Input(\"url\", \"pathname\"),\n    )\n    def show_hide_page(url_pathname):",
+        "peekOfCode": "def register_dashboard_callbacks(app: Dash):\n    @app.callback(\n        Output(\"dashboard-container\", \"className\"),\n        Input(\"url\", \"pathname\"),\n    )\n    def show_hide_page(url_pathname):\n        if session.get(\"authenticated\") == True:\n            return \"main-page-visible\"\n        return \"main-page-hidden\"\n    @app.callback(",
         "detail": "src.page_content.dashboard.callbacks",
         "documentation": {}
     },
@@ -786,8 +810,35 @@
         "kind": 6,
         "importPath": "src.page_content.dashboard.schemas",
         "description": "src.page_content.dashboard.schemas",
-        "peekOfCode": "class ChatMessage(BaseModel):\n    id: str\n    message: str\n    sender: Literal[\"user\", \"lyti\"]\n    timestamp: datetime",
+        "peekOfCode": "class ChatMessage(BaseModel):\n    id: str\n    message: str\n    sender: Literal[\"user\", \"lyti\"]\n    timestamp: datetime\nclass ChatThread(BaseModel):\n    id: str\n    title: str\n    messages: List[ChatMessage] | None = None\n    created_at: datetime",
         "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ChatThread",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class ChatThread(BaseModel):\n    id: str\n    title: str\n    messages: List[ChatMessage] | None = None\n    created_at: datetime\n    updated_at: datetime\nclass ChatThreads(BaseModel):\n    threads: Dict[str, List[ChatThread]]\n    def get_sorted_threads(self, reverse: bool = True) -> Dict[str, List[ChatThread]]:\n        \"\"\"",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ChatThreads",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class ChatThreads(BaseModel):\n    threads: Dict[str, List[ChatThread]]\n    def get_sorted_threads(self, reverse: bool = True) -> Dict[str, List[ChatThread]]:\n        \"\"\"\n        Sort the threads by date in order.\n        Args:\n            reverse (bool): If True, the threads will be sorted in descending order.\n                If False, the threads will be sorted in ascending order.\n        Returns:\n            A dictionary of threads sorted by date.",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "chat_history_modal",
+        "kind": 5,
+        "importPath": "src.page_content.dashboard.ui",
+        "description": "src.page_content.dashboard.ui",
+        "peekOfCode": "chat_history_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\n            dbc.ModalTitle(\n                [\n                    \"Chat History\",\n                    html.I(className=\"fa fa-history text-muted ms-2\"),\n                ],\n                className=\"fs-6 d-flex align-items-center\",\n            ),",
+        "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
     {
@@ -795,7 +846,7 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "chat_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                dbc.Container(\n                    [\n                        dbc.Container(\n                            [],\n                            class_name=\"flex-grow-1 m-0 p-0\",\n                            id=\"chat-content\",",
+        "peekOfCode": "chat_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            [\n                dbc.Container(\n                    [\n                        dbc.Container(\n                            [\n                                html.Span(\n                                    \"New Chat\",",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -836,6 +887,15 @@
         "documentation": {}
     },
     {
+        "label": "readable_when",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.utils",
+        "description": "src.page_content.dashboard.utils",
+        "peekOfCode": "def readable_when(date_: datetime | date | str) -> str:\n    if isinstance(date_, str):\n        date_ = date_parse(date_)\n    if isinstance(date_, date):\n        date_ = datetime.combine(date_, datetime.min.time())\n    if not isinstance(date_, datetime):\n        raise ValueError(\n            \"Invalid date. Must be a datetime, date, or datetime/date string.\"\n        )\n    minutes_ago = (datetime.now() - date_).total_seconds() / 60",
+        "detail": "src.page_content.dashboard.utils",
+        "documentation": {}
+    },
+    {
         "label": "get_coverage_areas",
         "kind": 2,
         "importPath": "src.page_content.dashboard.waiter",
@@ -863,11 +923,20 @@
         "documentation": {}
     },
     {
-        "label": "get_chat_messages",
+        "label": "get_chat_thread",
         "kind": 2,
         "importPath": "src.page_content.dashboard.waiter",
         "description": "src.page_content.dashboard.waiter",
-        "peekOfCode": "def get_chat_messages(\n    thread_id: str, new_message: str | None = None\n) -> List[ChatMessage]:\n    return [\n        ChatMessage(\n            id=\"1\",\n            message=\"Hello, how are you?\",\n            sender=\"user\",\n            timestamp=datetime.now(),\n        ),",
+        "peekOfCode": "def get_chat_thread(\n    thread_id: str,\n    new_message: str | None = None,\n    datetime_start: datetime | str | None = None,\n    datetime_end: datetime | str | None = None,\n    coverage_areas_ids: List[str] | None = None,\n) -> ChatThread:\n    \"\"\"\n    Get a chat thread with messages.\n    Args:",
+        "detail": "src.page_content.dashboard.waiter",
+        "documentation": {}
+    },
+    {
+        "label": "get_chat_threads",
+        "kind": 2,
+        "importPath": "src.page_content.dashboard.waiter",
+        "description": "src.page_content.dashboard.waiter",
+        "peekOfCode": "def get_chat_threads() -> ChatThreads:\n    \"\"\"\n    Return chat threads for a user. Does not include the messages in the threads.\n    Returns:\n        ChatThreads: A list of chat threads.\n    \"\"\"\n    chat_threads = [\n        ChatThread(\n            id=\"1\",\n            title=\"Transformer 1 stopped working\",",
         "detail": "src.page_content.dashboard.waiter",
         "documentation": {}
     },
@@ -876,7 +945,7 @@
         "kind": 2,
         "importPath": "src.page_content.callbacks",
         "description": "src.page_content.callbacks",
-        "peekOfCode": "def register_page_content_callbacks(\n    app: Dash,\n    store_data: Callable,\n    retrieve_data: Callable,\n):\n    pass\n    # @app.callback(\n    #     Output(\"page-content-sign-in\", \"class_name\", allow_duplicate=True),\n    #     Output(\"page-content-dashboard\", \"class_name\", allow_duplicate=True),\n    #     Output(\"data-name\", \"children\"),",
+        "peekOfCode": "def register_page_content_callbacks(app: Dash):\n    pass\n    # @app.callback(\n    #     Output(\"page-content-sign-in\", \"class_name\", allow_duplicate=True),\n    #     Output(\"page-content-dashboard\", \"class_name\", allow_duplicate=True),\n    #     Output(\"data-name\", \"children\"),\n    #     Input(\"url\", \"pathname\"),\n    #     Input(\"url\", \"refresh\"),\n    # )\n    # def on_app_reload(pathname, refresh):",
         "detail": "src.page_content.callbacks",
         "documentation": {}
     },
@@ -899,65 +968,11 @@
         "documentation": {}
     },
     {
-        "label": "store_data",
-        "kind": 2,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "def store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:\n        print(e)",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
-        "label": "retrieve_data",
-        "kind": 2,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "def retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:\n        print(e)\n        return None\ndef register_callbacks(app: Dash):",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
         "label": "register_callbacks",
         "kind": 2,
         "importPath": "src.callbacks",
         "description": "src.callbacks",
-        "peekOfCode": "def register_callbacks(app: Dash):\n    app._background_manager = background_callback_manager\n    register_nav_callbacks(app)\n    register_page_content_callbacks(app, store_data, retrieve_data)",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
-        "label": "redis_client",
-        "kind": 5,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "redis_client = redis.from_url(settings.REDIS_URL, decode_responses=True)\nredis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
-        "label": "redis_url",
-        "kind": 5,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "redis_url = (\n    f\"{settings.REDIS_URL}?ssl_cert_reqs=CERT_NONE\"\n    if \"rediss\" in settings.REDIS_URL\n    else settings.REDIS_URL\n)\ncelery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
-        "label": "celery_app",
-        "kind": 5,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "celery_app = Celery(__name__, broker=redis_url, backend=redis_url)\nbackground_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data",
-        "detail": "src.callbacks",
-        "documentation": {}
-    },
-    {
-        "label": "background_callback_manager",
-        "kind": 5,
-        "importPath": "src.callbacks",
-        "description": "src.callbacks",
-        "peekOfCode": "background_callback_manager = CeleryManager(celery_app, expire=30)\ndef store_data(data_key, data, expire=60 * 60 * 24 * 7):\n    return redis_client.set(data_key, data, ex=expire)\ndef retrieve_data(key, jsonize=True):\n    try:\n        data = redis_client.get(key)\n        if jsonize:\n            data = orjson.loads(data) if data else None\n        return data\n    except redis.exceptions.ConnectionError as e:",
+        "peekOfCode": "def register_callbacks(app: Dash):\n    register_nav_callbacks(app)\n    register_page_content_callbacks(app)",
         "detail": "src.callbacks",
         "documentation": {}
     },
@@ -975,7 +990,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "server = Flask(__name__)\nserver.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,",
+        "peekOfCode": "server = Flask(__name__)\nserver.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\ncache = diskcache.Cache(\"./cache\")\nbackground_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",",
         "detail": "app",
         "documentation": {}
     },
@@ -984,7 +999,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "server.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,",
+        "peekOfCode": "server.secret_key = settings.SECRET_KEY\nserver.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\ncache = diskcache.Cache(\"./cache\")\nbackground_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,",
         "detail": "app",
         "documentation": {}
     },
@@ -993,7 +1008,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "server.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,",
+        "peekOfCode": "server.config[\"SESSION_TYPE\"] = settings.SESSION_TYPE\nserver.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\ncache = diskcache.Cache(\"./cache\")\nbackground_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,",
         "detail": "app",
         "documentation": {}
     },
@@ -1002,7 +1017,25 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "server.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)",
+        "peekOfCode": "server.config[\"SESSION_PERMANENT\"] = settings.SESSION_PERMANENT\nSession(server)\ncache = diskcache.Cache(\"./cache\")\nbackground_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "cache",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "cache = diskcache.Cache(\"./cache\")\nbackground_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n    background_callback_manager=background_callback_manager,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "background_callback_manager",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "background_callback_manager = DiskcacheManager(cache)\napp = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n    background_callback_manager=background_callback_manager,\n)",
         "detail": "app",
         "documentation": {}
     },
@@ -1011,7 +1044,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n)\nlayout = dbc.Container(\n    [",
+        "peekOfCode": "app = Dash(\n    __name__,\n    title=\"AI Power Overloard\",\n    server=server,\n    suppress_callback_exceptions=True,\n    external_stylesheets=external_stylesheets,\n    prevent_initial_callbacks=True,\n    background_callback_manager=background_callback_manager,\n)\nlayout = dbc.Container(",
         "detail": "app",
         "documentation": {}
     },
@@ -1020,7 +1053,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"session\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        dcc.Interval(id=\"signal-stream-interval\", interval=60 * 1000, n_intervals=1),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,",
+        "peekOfCode": "layout = dbc.Container(\n    [\n        dcc.Location(id=\"url\", refresh=False),\n        dcc.Store(id=\"local-store\", storage_type=\"session\", data={}),\n        html.Div(id=\"dummy-output\", className=\"d-none\"),\n        dcc.Interval(id=\"signal-stream-interval\", interval=3 * 60 * 1000),\n        navbar_ui,\n        page_content_ui,\n    ],\n    fluid=True,",
         "detail": "app",
         "documentation": {}
     },
@@ -1029,7 +1062,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.layout = dmc.MantineProvider(children=layout)\nregister_callbacks(app)\nif __name__ == \"__main__\":\n    app.run(debug=True)",
+        "peekOfCode": "app.layout = dmc.MantineProvider(children=layout)\nregister_callbacks(app)\nif __name__ == \"__main__\":\n    app.run(debug=False)",
         "detail": "app",
         "documentation": {}
     },

@@ -7,12 +7,45 @@ import dash_mantine_components as dmc
 from ..footer_ui import get_footer
 
 
+chat_history_modal = dbc.Modal(
+    [
+        dbc.ModalHeader(
+            dbc.ModalTitle(
+                [
+                    "Chat History",
+                    html.I(className="fa fa-history text-muted ms-2"),
+                ],
+                className="fs-6 d-flex align-items-center",
+            ),
+            close_button=False,
+        ),
+        dcc.Loading(
+            dbc.ModalBody(
+                id="chat-history-modal-body",
+            ),
+            type="dot",
+        ),
+    ],
+    id="chat-history-modal",
+)
+
 chat_canvas = html.Div(
     [
         dbc.Offcanvas(
             [
                 dbc.Container(
                     [
+                        dbc.Container(
+                            [
+                                html.Span(
+                                    "New Chat",
+                                    id="current-chat-title",
+                                    className="text-muted",
+                                ),
+                                html.Span(id="current-chat-id", className="d-none"),
+                            ],
+                            class_name="m-0",
+                        ),
                         dbc.Container(
                             [],
                             class_name="flex-grow-1 m-0 p-0",
@@ -30,10 +63,20 @@ chat_canvas = html.Div(
                                     className="me-3 flex-grow-1",
                                 ),
                                 dbc.Button(
-                                    html.I(
-                                        className="fa fa-arrow-up text-muted",
-                                        **{"aria-hidden": "true"},
-                                    ),
+                                    [
+                                        html.I(
+                                            className="fa fa-stop text-muted d-none",
+                                            **{"aria-hidden": "true"},
+                                            title="Cancel",
+                                            id="chat-cancel-icon",
+                                        ),
+                                        html.I(
+                                            className="fa fa-arrow-up text-muted",
+                                            **{"aria-hidden": "true"},
+                                            title="Send",
+                                            id="chat-send-icon",
+                                        ),
+                                    ],
                                     id="chat-send-btn",
                                 ),
                             ],
@@ -49,25 +92,39 @@ chat_canvas = html.Div(
             scrollable=True,
             title=html.Div(
                 [
-                    html.Img(
-                        src="assets/lyti.png",
-                        className="rounded-circle lyti-img",
-                        style={"height": 40},
-                    ),
-                    html.Div(
+                    dbc.Container(
                         [
-                            html.Span(
-                                "Lyti",
-                                className="glow-gradient mx-1",
+                            html.Img(
+                                src="assets/lyti.png",
+                                className="rounded-circle lyti-img",
+                                style={"height": 40},
                             ),
-                            html.Div(className="pulse-circle"),
-                        ],
-                        className="d-flex justify-content-center align-items-center",
+                            html.Div(
+                                [
+                                    html.Span(
+                                        "Lyti",
+                                        className="glow-gradient mx-1",
+                                    ),
+                                    html.Div(className="pulse-circle"),
+                                ],
+                                className="d-flex justify-content-center align-items-center",
+                            ),
+                        ]
                     ),
+                    html.I(
+                        className="fa fa-history text-muted ms-4 align-self-end fs-6",
+                        title="Chat history",
+                        id="threads-btn",
+                    ),
+                    html.I(
+                        className="fa fa-plus text-muted ms-4 align-self-end fs-6",
+                        title="New chat",
+                        id="new-chat-btn",
+                    ),
+                    chat_history_modal,
                 ],
-                className="d-flex justify-content-center align-items-center",
+                className="d-flex justify-content-between align-items-center w-100 mb-0",
             ),
-            is_open=False,
         ),
     ]
 )
@@ -126,7 +183,6 @@ fullscreen_graph_modal = dbc.Modal(
     id="graph-fullscreen-modal",
     fullscreen=True,
 )
-
 
 dashboard_ui = dbc.Container(
     [
@@ -193,7 +249,7 @@ dashboard_ui = dbc.Container(
                                     ),
                                     coverage_area_modal,
                                 ],
-                                class_name="shadow-sm border-0",
+                                class_name="shadow-sm border-0 h-100",
                             ),
                             class_name="col-12 col-md-6 col-lg-4 mt-1",
                         ),
@@ -268,7 +324,7 @@ dashboard_ui = dbc.Container(
                                     ],
                                     className="p-0",
                                 ),
-                                class_name="shadow-sm border-0",
+                                class_name="shadow-sm border-0 h-100",
                             ),
                             class_name="col-12 col-md-6 col-lg-5 mt-1",
                         ),
@@ -279,7 +335,6 @@ dashboard_ui = dbc.Container(
                                         [
                                             "Signal Stream",
                                             dbc.Badge(
-                                                "99+",
                                                 color="danger",
                                                 pill=True,
                                                 text_color="white",

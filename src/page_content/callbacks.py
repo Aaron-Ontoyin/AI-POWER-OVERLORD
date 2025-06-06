@@ -7,11 +7,7 @@ from .dashboard import register_dashboard_callbacks
 from .auth import register_auth_callbacks
 
 
-def register_page_content_callbacks(
-    app: Dash,
-    store_data: Callable,
-    retrieve_data: Callable,
-):
+def register_page_content_callbacks(app: Dash):
     pass
     # @app.callback(
     #     Output("page-content-sign-in", "class_name", allow_duplicate=True),
@@ -35,5 +31,5 @@ def register_page_content_callbacks(
     #         data_name,
     #     )
 
-    register_dashboard_callbacks(app, store_data, retrieve_data)
+    register_dashboard_callbacks(app)
     register_auth_callbacks(app)
