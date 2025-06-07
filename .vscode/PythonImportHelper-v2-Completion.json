@@ -378,7 +378,23 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -399,15 +415,6 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "dash.exceptions",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "dash.exceptions",
-        "description": "dash.exceptions",
-        "detail": "dash.exceptions",
         "documentation": {}
     },
     {
@@ -478,14 +485,6 @@
         "documentation": {}
     },
     {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "date",
         "importPath": "datetime",
         "description": "datetime",
@@ -507,6 +506,14 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
         "documentation": {}
     },
     {
@@ -770,11 +777,20 @@
         "documentation": {}
     },
     {
+        "label": "CoverageAreaType",
+        "kind": 6,
+        "importPath": "src.page_content.dashboard.schemas",
+        "description": "src.page_content.dashboard.schemas",
+        "peekOfCode": "class CoverageAreaType(Enum):\n    COUNTRY = \"country\"\n    PROVINCE = \"province\"\n    DISTRICT = \"district\"\n    SUB_DISTRICT = \"sub-district\"\n    VILLAGE = \"village\"\nclass CoverageArea(BaseModel):\n    id: str\n    type: CoverageAreaType\n    name: str",
+        "detail": "src.page_content.dashboard.schemas",
+        "documentation": {}
+    },
+    {
         "label": "CoverageArea",
         "kind": 6,
         "importPath": "src.page_content.dashboard.schemas",
         "description": "src.page_content.dashboard.schemas",
-        "peekOfCode": "class CoverageArea(BaseModel):\n    id: str\n    type: str\n    name: str\n    description: str\n    checked: bool = False\n    sub_areas: List[\"CoverageArea\"] = []\n    @property\n    def badge_color(self):\n        type_ = self.type.lower()",
+        "peekOfCode": "class CoverageArea(BaseModel):\n    id: str\n    type: CoverageAreaType\n    name: str\n    description: str\n    checked: bool = False\n    sub_areas: List[\"CoverageArea\"] = []\n    @property\n    def badge_color(self):\n        match self.type:",
         "detail": "src.page_content.dashboard.schemas",
         "documentation": {}
     },
@@ -783,7 +799,7 @@
         "kind": 6,
         "importPath": "src.page_content.dashboard.schemas",
         "description": "src.page_content.dashboard.schemas",
-        "peekOfCode": "class DashboardData(BaseModel):\n    coverage_area_ids: List[str]\n    datetime_start: datetime\n    datetime_end: datetime\n    num_transformers: int\n    num_meters: int\n    consumption_pattern_dict: dict\n    trend_analysis_dict: dict\n    freq_analysis_dict: dict\n    anomaly_dict: dict",
+        "peekOfCode": "class DashboardData(BaseModel):\n    coverage_area_ids: List[str]\n    datetime_start: datetime\n    datetime_end: datetime\n    num_transformers: int\n    num_meters: int\n    consumption_pattern_dict: Dict[str, Any]\n    trend_analysis_dict: Dict[str, Any]\n    freq_analysis_dict: Dict[str, Any]\n    anomaly_dict: Dict[str, Any]",
         "detail": "src.page_content.dashboard.schemas",
         "documentation": {}
     },
@@ -792,7 +808,7 @@
         "kind": 6,
         "importPath": "src.page_content.dashboard.schemas",
         "description": "src.page_content.dashboard.schemas",
-        "peekOfCode": "class Plots(BaseModel):\n    num_transformers: int\n    num_meters: int\n    consump_ptrns_dict: dict\n    trend_analysis_dict: dict\n    freq_analysis_dict: dict\n    anomaly_dict: dict\n    @property\n    def consump_ptrns_fig(self) -> go.Figure:\n        return go.Figure(self.consump_ptrns_dict)",
+        "peekOfCode": "class Plots(BaseModel):\n    num_transformers: int\n    num_meters: int\n    consump_ptrns_dict: Dict[str, Any]\n    trend_analysis_dict: Dict[str, Any]\n    freq_analysis_dict: Dict[str, Any]\n    anomaly_dict: Dict[str, Any]\n    @property\n    def consump_ptrns_fig(self) -> go.Figure:  # type: ignore\n        return go.Figure(self.consump_ptrns_dict)  # type: ignore",
         "detail": "src.page_content.dashboard.schemas",
         "documentation": {}
     },
@@ -855,7 +871,7 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "coverage_area_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\n            [\n                dbc.ModalTitle(\"Select Coverage Areas\", className=\"fs-6\"),\n                html.I(\n                    className=\"fa fa-street-view text-muted\", **{\"aria-hidden\": \"true\"}\n                ),\n            ],\n            class_name=\"d-flex justify-content-between pe-4\",",
+        "peekOfCode": "coverage_area_modal = dbc.Modal(\n    [\n        dbc.ModalHeader(\n            [\n                dbc.ModalTitle(\"Select Coverage Areas\", className=\"fs-6\"),\n                html.I(\n                    className=\"fa fa-street-view text-muted\", **{\"aria-hidden\": \"true\"}  # type: ignore\n                ),\n            ],\n            class_name=\"d-flex justify-content-between pe-4\",",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -864,7 +880,7 @@
         "kind": 5,
         "importPath": "src.page_content.dashboard.ui",
         "description": "src.page_content.dashboard.ui",
-        "peekOfCode": "signal_stream_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            id=\"signal-stream-canvas\",\n            scrollable=True,\n            title=html.Div(\n                [\n                    html.I(\n                        className=\"fa fa-bell text-muted me-3\",\n                        **{\"aria-hidden\": \"true\"},",
+        "peekOfCode": "signal_stream_canvas = html.Div(\n    [\n        dbc.Offcanvas(\n            id=\"signal-stream-canvas\",\n            scrollable=True,\n            title=html.Div(\n                [\n                    html.I(\n                        className=\"fa fa-bell text-muted me-3\",\n                        **{\"aria-hidden\": \"true\"},  # type: ignore",
         "detail": "src.page_content.dashboard.ui",
         "documentation": {}
     },
@@ -891,7 +907,7 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.utils",
         "description": "src.page_content.dashboard.utils",
-        "peekOfCode": "def readable_when(date_: datetime | date | str) -> str:\n    if isinstance(date_, str):\n        date_ = date_parse(date_)\n    if isinstance(date_, date):\n        date_ = datetime.combine(date_, datetime.min.time())\n    if not isinstance(date_, datetime):\n        raise ValueError(\n            \"Invalid date. Must be a datetime, date, or datetime/date string.\"\n        )\n    minutes_ago = (datetime.now() - date_).total_seconds() / 60",
+        "peekOfCode": "def readable_when(date_: datetime | date | str) -> str:\n    if isinstance(date_, date):\n        date_ = datetime.combine(date_, datetime.min.time())\n    try:\n        date_ = date_parse(date_)  # type: ignore\n    except ValueError:\n        raise ValueError(\n            \"Invalid date. Must be a datetime, date, or datetime/date string.\"\n        )\n    minutes_ago = (datetime.now() - date_).total_seconds() / 60",
         "detail": "src.page_content.dashboard.utils",
         "documentation": {}
     },
@@ -900,7 +916,7 @@
         "kind": 2,
         "importPath": "src.page_content.dashboard.waiter",
         "description": "src.page_content.dashboard.waiter",
-        "peekOfCode": "def get_coverage_areas() -> List[CoverageArea]:\n    \"\"\"\n    Get the coverage areas from the api\n    \"\"\"\n    time.sleep(2)\n    return [\n        CoverageArea(\n            id=\"1\",\n            type=\"Country\",\n            name=\"Ghana\",",
+        "peekOfCode": "def get_coverage_areas() -> List[CoverageArea]:\n    \"\"\"\n    Get the coverage areas from the api\n    \"\"\"\n    time.sleep(2)\n    return [\n        CoverageArea(\n            id=\"1\",\n            type=CoverageAreaType.COUNTRY,\n            name=\"Ghana\",",
         "detail": "src.page_content.dashboard.waiter",
         "documentation": {}
     },
@@ -1062,7 +1078,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.layout = dmc.MantineProvider(children=layout)\nregister_callbacks(app)\nif __name__ == \"__main__\":\n    app.run(debug=False)",
+        "peekOfCode": "app.layout = dmc.MantineProvider(children=layout)\nregister_callbacks(app)\nif __name__ == \"__main__\":\n    app.run(debug=False)  # type: ignore",
         "detail": "app",
         "documentation": {}
     },

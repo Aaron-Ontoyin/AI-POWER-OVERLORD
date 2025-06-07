@@ -22,7 +22,7 @@ navbar_ui = dbc.Navbar(
                     ),
                     dbc.Col(
                         [
-                            html.I(id="user-name-check", **{"aria-hidden": "true"}),
+                            html.I(id="user-name-check", **{"aria-hidden": "true"}),  # type: ignore
                             html.Span(
                                 style={
                                     "fontWeight": "bold",

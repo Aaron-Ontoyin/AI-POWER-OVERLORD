@@ -59,4 +59,4 @@ app.layout = dmc.MantineProvider(children=layout)
 register_callbacks(app)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=False)  # type: ignore

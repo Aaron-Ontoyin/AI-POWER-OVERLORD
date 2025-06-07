@@ -1,14 +1,23 @@
-from typing import List, Literal, Dict
+from typing import List, Literal, Dict, Any
 from datetime import datetime
+from enum import Enum
 
 from pydantic import BaseModel
 import pandas as pd
 import plotly.graph_objects as go
 
 
+class CoverageAreaType(Enum):
+    COUNTRY = "country"
+    PROVINCE = "province"
+    DISTRICT = "district"
+    SUB_DISTRICT = "sub-district"
+    VILLAGE = "village"
+
+
 class CoverageArea(BaseModel):
     id: str
-    type: str
+    type: CoverageAreaType
     name: str
     description: str
     checked: bool = False
@@ -16,19 +25,16 @@ class CoverageArea(BaseModel):
 
     @property
     def badge_color(self):
-        type_ = self.type.lower()
-        match type_:
-            case "country":
+        match self.type:
+            case CoverageAreaType.COUNTRY:
                 return "blue"
-            case "province":
+            case CoverageAreaType.PROVINCE:
                 return "indigo"
-            case "district":
+            case CoverageAreaType.DISTRICT:
                 return "teal"
-            case "sub-district":
+            case CoverageAreaType.SUB_DISTRICT:
                 return "cyan"
-            case "village":
-                return "gray"
-            case _:
+            case CoverageAreaType.VILLAGE:
                 return "gray"
 
 
@@ -38,10 +44,10 @@ class DashboardData(BaseModel):
     datetime_end: datetime
     num_transformers: int
     num_meters: int
-    consumption_pattern_dict: dict
-    trend_analysis_dict: dict
-    freq_analysis_dict: dict
-    anomaly_dict: dict
+    consumption_pattern_dict: Dict[str, Any]
+    trend_analysis_dict: Dict[str, Any]
+    freq_analysis_dict: Dict[str, Any]
+    anomaly_dict: Dict[str, Any]
 
     @property
     def consumption_pattern_df(self) -> pd.DataFrame:
@@ -63,26 +69,26 @@ class DashboardData(BaseModel):
 class Plots(BaseModel):
     num_transformers: int
     num_meters: int
-    consump_ptrns_dict: dict
-    trend_analysis_dict: dict
-    freq_analysis_dict: dict
-    anomaly_dict: dict
+    consump_ptrns_dict: Dict[str, Any]
+    trend_analysis_dict: Dict[str, Any]
+    freq_analysis_dict: Dict[str, Any]
+    anomaly_dict: Dict[str, Any]
 
     @property
-    def consump_ptrns_fig(self) -> go.Figure:
-        return go.Figure(self.consump_ptrns_dict)
+    def consump_ptrns_fig(self) -> go.Figure:  # type: ignore
+        return go.Figure(self.consump_ptrns_dict)  # type: ignore
 
     @property
-    def trend_analysis_fig(self) -> go.Figure:
-        return go.Figure(self.trend_analysis_dict)
+    def trend_analysis_fig(self) -> go.Figure:  # type: ignore
+        return go.Figure(self.trend_analysis_dict)  # type: ignore
 
     @property
-    def freq_analysis_fig(self) -> go.Figure:
-        return go.Figure(self.freq_analysis_dict)
+    def freq_analysis_fig(self) -> go.Figure:  # type: ignore
+        return go.Figure(self.freq_analysis_dict)  # type: ignore
 
     @property
-    def anomaly_fig(self) -> go.Figure:
-        return go.Figure(self.anomaly_dict)
+    def anomaly_fig(self) -> go.Figure:  # type: ignore
+        return go.Figure(self.anomaly_dict)  # type: ignore
 
 
 class SignalStream(BaseModel):

@@ -2,8 +2,7 @@
 This module contains the functions to fetch data from the api
 """
 
-import dash.exceptions
-from typing import List
+from typing import List, Dict
 from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
@@ -17,6 +16,7 @@ from .schemas import (
     ChatMessage,
     ChatThread,
     ChatThreads,
+    CoverageAreaType,
 )
 
 
@@ -28,38 +28,38 @@ def get_coverage_areas() -> List[CoverageArea]:
     return [
         CoverageArea(
             id="1",
-            type="Country",
+            type=CoverageAreaType.COUNTRY,
             name="Ghana",
             description="Ghana is a country in West Africa.",
             sub_areas=[
                 CoverageArea(
                     id="2",
-                    type="Province",
+                    type=CoverageAreaType.PROVINCE,
                     name="Western Province",
                     description="Western Province",
                     sub_areas=[
                         CoverageArea(
                             id="3",
-                            type="District",
+                            type=CoverageAreaType.DISTRICT,
                             name="Tongo District",
                             description="Tongo District",
                             sub_areas=[
                                 CoverageArea(
                                     id="4",
-                                    type="Sub-District",
+                                    type=CoverageAreaType.SUB_DISTRICT,
                                     name="Tongo Sub-District",
                                     description="Tongo Sub-District is a sub-district in the Tongo District of the Western Province of Ghana.",
                                     sub_areas=[
                                         CoverageArea(
                                             id="6",
-                                            type="Village",
+                                            type=CoverageAreaType.VILLAGE,
                                             name="Tongo Village",
                                             description="Tongo Village is a village in the Tongo Sub-District of the Tongo District of the Western Province of Ghana.",
                                             sub_areas=[],
                                         ),
                                         CoverageArea(
                                             id="7",
-                                            type="Village",
+                                            type=CoverageAreaType.VILLAGE,
                                             name="Tongo Village 2",
                                             description="Tongo Village 2 is a village in the Tongo Sub-District of the Tongo District of the Western Province of Ghana.",
                                             sub_areas=[],
@@ -68,7 +68,7 @@ def get_coverage_areas() -> List[CoverageArea]:
                                 ),
                                 CoverageArea(
                                     id="5",
-                                    type="Sub-District",
+                                    type=CoverageAreaType.SUB_DISTRICT,
                                     name="Tongo Sub-District 2",
                                     description="Tongo Sub-District 2 is a sub-district in the Tongo District of the Western Province of Ghana.",
                                     sub_areas=[],
@@ -77,14 +77,14 @@ def get_coverage_areas() -> List[CoverageArea]:
                         ),
                         CoverageArea(
                             id="4",
-                            type="District",
+                            type=CoverageAreaType.DISTRICT,
                             name="Tongo District",
                             description="Tongo District",
                             sub_areas=[],
                         ),
                         CoverageArea(
                             id="5",
-                            type="District",
+                            type=CoverageAreaType.DISTRICT,
                             name="Tongo District",
                             description="Tongo District",
                             sub_areas=[],
@@ -93,20 +93,20 @@ def get_coverage_areas() -> List[CoverageArea]:
                 ),
                 CoverageArea(
                     id="3",
-                    type="Province",
+                    type=CoverageAreaType.PROVINCE,
                     name="Eastern Province",
                     description="Eastern Province",
                     sub_areas=[
                         CoverageArea(
                             id="5",
-                            type="District",
+                            type=CoverageAreaType.DISTRICT,
                             name="Tongo District",
                             description="Tongo District",
                             sub_areas=[],
                         ),
                         CoverageArea(
                             id="6",
-                            type="District",
+                            type=CoverageAreaType.DISTRICT,
                             name="Tongo District",
                             description="Tongo District",
                             sub_areas=[],
@@ -115,14 +115,14 @@ def get_coverage_areas() -> List[CoverageArea]:
                 ),
                 CoverageArea(
                     id="4",
-                    type="Province",
+                    type=CoverageAreaType.PROVINCE,
                     name="Northern Province",
                     description="Northern Province",
                     sub_areas=[],
                 ),
                 CoverageArea(
                     id="5",
-                    type="Province",
+                    type=CoverageAreaType.PROVINCE,
                     name="Southern Province",
                     description="Southern Province",
                     sub_areas=[],
@@ -166,10 +166,10 @@ def get_dashboard_data(
         datetime_end=datetime_end,
         num_transformers=random.choice([10, 15, 20, 40]),
         num_meters=random.choice([50, 100, 200, 1000]),
-        consumption_pattern_dict=df.to_dict(),
-        trend_analysis_dict=df.to_dict(),
-        freq_analysis_dict=df.to_dict(),
-        anomaly_dict=df.to_dict(),
+        consumption_pattern_dict=df.to_dict(),  # type: ignore
+        trend_analysis_dict=df.to_dict(),  # type: ignore
+        freq_analysis_dict=df.to_dict(),  # type: ignore
+        anomaly_dict=df.to_dict(),  # type: ignore
     )
 
 
@@ -350,7 +350,7 @@ def get_chat_threads() -> ChatThreads:
             updated_at=datetime.now(),
         ),
     ]
-    threads = {}
+    threads: Dict[str, List[ChatThread]] = {}
     for chat_thread in chat_threads:
         date = chat_thread.updated_at.strftime("%Y-%m-%d")
         if date not in threads:

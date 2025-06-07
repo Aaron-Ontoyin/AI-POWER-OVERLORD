@@ -1,16 +1,18 @@
-from datetime import datetime, timedelta, date
+from datetime import datetime, date
 from dateutil.parser import parse as date_parse
 
 
 def readable_when(date_: datetime | date | str) -> str:
-    if isinstance(date_, str):
-        date_ = date_parse(date_)
     if isinstance(date_, date):
         date_ = datetime.combine(date_, datetime.min.time())
-    if not isinstance(date_, datetime):
+
+    try:
+        date_ = date_parse(date_)  # type: ignore
+    except ValueError:
         raise ValueError(
             "Invalid date. Must be a datetime, date, or datetime/date string."
         )
+
     minutes_ago = (datetime.now() - date_).total_seconds() / 60
     if minutes_ago < 1:
         return "Just now"

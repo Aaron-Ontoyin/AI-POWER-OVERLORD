@@ -66,13 +66,13 @@ chat_canvas = html.Div(
                                     [
                                         html.I(
                                             className="fa fa-stop text-muted d-none",
-                                            **{"aria-hidden": "true"},
+                                            **{"aria-hidden": "true"},  # type: ignore
                                             title="Cancel",
                                             id="chat-cancel-icon",
                                         ),
                                         html.I(
                                             className="fa fa-arrow-up text-muted",
-                                            **{"aria-hidden": "true"},
+                                            **{"aria-hidden": "true"},  # type: ignore
                                             title="Send",
                                             id="chat-send-icon",
                                         ),
@@ -135,7 +135,7 @@ coverage_area_modal = dbc.Modal(
             [
                 dbc.ModalTitle("Select Coverage Areas", className="fs-6"),
                 html.I(
-                    className="fa fa-street-view text-muted", **{"aria-hidden": "true"}
+                    className="fa fa-street-view text-muted", **{"aria-hidden": "true"}  # type: ignore
                 ),
             ],
             class_name="d-flex justify-content-between pe-4",
@@ -167,7 +167,7 @@ signal_stream_canvas = html.Div(
                 [
                     html.I(
                         className="fa fa-bell text-muted me-3",
-                        **{"aria-hidden": "true"},
+                        **{"aria-hidden": "true"},  # type: ignore
                     ),
                     html.Div("Alerts!", className="text-muted fs-5"),
                 ],
@@ -216,8 +216,12 @@ dashboard_ui = dbc.Container(
                                                                 dmc.DateTimePicker(
                                                                     id="datetime-picker-start",
                                                                     valueFormat="MMM D, YYYY HH:mm",
-                                                                    value=date.today()
-                                                                    - timedelta(days=7),
+                                                                    value=(
+                                                                        date.today()
+                                                                        - timedelta(
+                                                                            days=7
+                                                                        )
+                                                                    ).isoformat(),
                                                                     clearable=False,
                                                                     className="setting-dtp",
                                                                 ),
@@ -227,7 +231,7 @@ dashboard_ui = dbc.Container(
                                                                 dmc.DateTimePicker(
                                                                     id="datetime-picker-end",
                                                                     valueFormat="MMM D, YYYY HH:mm",
-                                                                    value=date.today(),
+                                                                    value=date.today().isoformat(),
                                                                     clearable=False,
                                                                     className="setting-dtp",
                                                                 ),
